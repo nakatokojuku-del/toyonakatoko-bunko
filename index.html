@@ -36,9 +36,6 @@
     --muted:#6f6048; --line:#cdbf9f; --line-soft:#ddd0b2;
     --serif:'Shippori Mincho','Noto Serif JP','Hiragino Mincho ProN','Yu Mincho',serif;
     --gold-leaf:linear-gradient(110deg,#8a6c2e 0%,#b9a05e 28%,#e6d6a4 46%,#9a7d3c 60%,#c9b072 80%,#8a6c2e 100%);
-    --asanoha:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='97' viewBox='0 0 56 97'%3E%3Cg fill='none' stroke='%239a7d3c' stroke-width='1'%3E%3Cpath d='M28 0v97M0 16.2l28 16.2 28-16.2M0 80.8l28-16.2 28 16.2M28 32.4L0 48.5v32.3M28 32.4l28 16.1v32.3M28 64.6L0 48.5M28 64.6l28-16.1M0 16.2v32.3M56 16.2v32.3'/%3E%3C/g%3E%3C/svg%3E");
-    --shippou:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44'%3E%3Cg fill='none' stroke='%239a7d3c' stroke-width='1'%3E%3Ccircle cx='0' cy='22' r='22'/%3E%3Ccircle cx='44' cy='22' r='22'/%3E%3Ccircle cx='22' cy='0' r='22'/%3E%3Ccircle cx='22' cy='44' r='22'/%3E%3C/g%3E%3C/svg%3E");
-    --shippou:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cg fill='none' stroke='%239a7d3c' stroke-width='1.1'%3E%3Ccircle cx='0' cy='24' r='17'/%3E%3Ccircle cx='48' cy='24' r='17'/%3E%3Ccircle cx='24' cy='0' r='17'/%3E%3Ccircle cx='24' cy='48' r='17'/%3E%3Ccircle cx='24' cy='24' r='17'/%3E%3C/g%3E%3C/svg%3E");
     --seigaiha:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='30' viewBox='0 0 60 30'%3E%3Cg fill='none' stroke='%23b9a05e' stroke-width='1.1'%3E%3Cpath d='M0 30a30 30 0 0 1 30-30 30 30 0 0 1 30 30'/%3E%3Cpath d='M0 30a21 21 0 0 1 30-21 21 21 0 0 1 30 21'/%3E%3Cpath d='M0 30a12 12 0 0 1 30-12 12 12 0 0 1 30 12'/%3E%3Cpath d='M-30 30a30 30 0 0 1 30-30M60 30a30 30 0 0 1 30-30'/%3E%3Cpath d='M-30 30a21 21 0 0 1 30-21M60 30a21 21 0 0 1 30-21'/%3E%3Cpath d='M-30 30a12 12 0 0 1 30-12M60 30a12 12 0 0 1 30-12'/%3E%3C/g%3E%3C/svg%3E");
   }
 
@@ -51,9 +48,17 @@
       radial-gradient(circle at 84% 86%, rgba(154,125,60,.08), transparent 46%),
       url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
     line-height:1.95; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; min-height:100vh;
+    overflow-x:hidden;
   }
-  .wrap{max-width:880px;margin:0 auto;padding:0 clamp(1.5rem,4vw,3.5rem);}
-  .hero-lead,p.body,.hero-promise,.contact-desc,.tg-lead,.tg-sub,.voice-text,.bunko-link p,.cta-lead,.f-line{word-break:auto-phrase;line-break:strict;}
+  img{max-width:100%;}
+  .wrap{max-width:880px;margin:0 auto;padding:0 clamp(1.25rem,4vw,3.5rem);}
+  .wrap-wide{max-width:1160px;margin:0 auto;padding:0 clamp(1.25rem,4vw,3.5rem);}
+  .hero-lead,.hero-promise,.tg-lead,.tg-sub,.voice-text,.vf-quote p,.bunko-text p,.cta-lead,.f-line,.contact-desc,.tb-text p,.tobira-intro p{word-break:auto-phrase;line-break:strict;}
+  .em{color:var(--vermilion-deep);font-weight:600;}
+
+  /* 実写真：枠や額縁で飾らず、紙に直に置く */
+  .ph{display:block;margin:0;overflow:hidden;background:var(--paper-3);}
+  .ph img{display:block;width:100%;height:100%;object-fit:cover;filter:saturate(.9) contrast(1.02);}
 
   /* reveal */
   .reveal{transition:opacity 1.05s cubic-bezier(.2,.6,.2,1),transform 1.05s cubic-bezier(.2,.6,.2,1);}
@@ -61,29 +66,19 @@
   .js-anim .reveal.in{opacity:1;transform:none;}
   @media (prefers-reduced-motion:reduce){.js-anim .reveal{opacity:1;transform:none;transition:none;}}
 
-  /* seal 朱印 */
+  /* 朱印（題字まわりと奥付だけに使う） */
   .seal{
     position:relative;display:grid;place-content:center;flex-shrink:0;
-    background:
-      linear-gradient(135deg,var(--vermilion-soft),var(--vermilion) 45%,var(--vermilion-deep));
+    background:linear-gradient(135deg,var(--vermilion-soft),var(--vermilion) 45%,var(--vermilion-deep));
     color:#fbf4e6;font-weight:700;letter-spacing:0;border-radius:3px;
     box-shadow:inset 0 0 0 1px rgba(255,240,220,.35), 0 5px 14px -8px rgba(138,42,32,.7);
     font-family:var(--serif);
   }
   .seal::after{content:"";position:absolute;inset:3px;border:1px solid rgba(255,240,220,.5);border-radius:1px;pointer-events:none;}
-  .seal.sq{width:40px;height:40px;font-size:.92rem;line-height:1.05;text-align:center;}
-  .seal.lg{width:48px;height:48px;font-size:1rem;}
-
-  /* gold foil text */
-  .foil{
-    background:var(--gold-leaf);-webkit-background-clip:text;background-clip:text;color:transparent;
-    -webkit-text-fill-color:transparent;
-  }
 
   /* ── topbar ── */
   .topbar{border-bottom:1px solid var(--line);background:linear-gradient(var(--paper),rgba(239,231,212,.6));position:sticky;top:0;z-index:30;backdrop-filter:blur(4px);}
-  .topbar::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:linear-gradient(90deg,transparent,var(--gold-soft) 22%,var(--gold-soft) 78%,transparent);opacity:.5;}
-  .topbar .inner{max-width:1160px;margin:0 auto;padding:.55rem clamp(1.4rem,4vw,3.5rem);display:flex;align-items:center;justify-content:space-between;min-height:66px;gap:1rem;}
+  .topbar .inner{max-width:1160px;margin:0 auto;padding:.55rem clamp(1.25rem,4vw,3.5rem);display:flex;align-items:center;justify-content:space-between;min-height:66px;gap:1rem;}
   .wordmark{display:flex;align-items:center;gap:.8rem;font-size:1.04rem;letter-spacing:.44em;color:var(--ink);font-weight:600;text-decoration:none;white-space:nowrap;}
   .wordmark .seal{width:30px;height:30px;font-size:11px;line-height:12px;border-radius:2px;}
   .wordmark .seal::after{inset:2px;}
@@ -91,178 +86,169 @@
   .topnav a{color:inherit;text-decoration:none;padding-bottom:3px;border-bottom:1px solid transparent;transition:border-color .25s,color .25s;white-space:nowrap;}
   .topnav a:hover{color:var(--vermilion);border-color:var(--vermilion);}
 
-  /* ── hero（没入型・全面写真） ── */
-  .page-header{position:relative;border-bottom:1px solid var(--line);overflow:hidden;}
-
-  /* 上段：写真の全面バナー */
+  /* ── hero（塾主の写真と題字はそのまま） ── */
+  .page-header{position:relative;overflow:hidden;}
   .hero-stage{position:relative;min-height:clamp(440px,72vh,720px);display:flex;align-items:flex-end;overflow:hidden;background:var(--ink);}
   .hero-stage .bg{position:absolute;inset:0;background-image:url("https://nakatokojuku.jp/nakatokojuku/photo_book.jpg");background-size:cover;background-position:center 28%;filter:saturate(.86) contrast(1.03);transform:scale(1.04);}
   .hero-stage .scrim{position:absolute;inset:0;background:
       linear-gradient(180deg, rgba(20,14,9,.42) 0%, rgba(20,14,9,.12) 30%, rgba(20,14,9,.34) 64%, rgba(18,12,8,.86) 100%),
       linear-gradient(90deg, rgba(18,12,8,.62) 0%, rgba(18,12,8,.14) 42%, transparent 72%),
       linear-gradient(270deg, rgba(18,12,8,.22) 0%, rgba(18,12,8,.12) 14%, rgba(18,12,8,.04) 26%, transparent 38%);}
-  .hero-stage .asanoha-ov{position:absolute;inset:0;background-image:var(--shippou);background-size:44px 44px;opacity:.10;mix-blend-mode:overlay;pointer-events:none;}
-  .hero-stage .foil-top{position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold-leaf);opacity:.9;z-index:3;}
-
-  /* 縦書きの大字「中常塾」 */
   .hero-vtitle{position:absolute;top:clamp(2.2rem,6vw,4.2rem);right:clamp(1.4rem,6vw,5rem);z-index:3;writing-mode:vertical-rl;text-orientation:upright;font-family:'Zen Old Mincho',var(--serif);font-size:clamp(3.4rem,11vw,8rem);font-weight:900;letter-spacing:.04em;line-height:.98;color:#fabf14;text-shadow:0 2px 24px rgba(0,0,0,.55),0 0 1px rgba(0,0,0,.7);}
   .hero-vtitle .foilchar{background:linear-gradient(110deg,#7a5a14 0%,#d8b34a 18%,#ffe996 36%,#c2942a 52%,#f9dc76 68%,#8a6a16 84%,#eccb5e 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;filter:drop-shadow(0 1px 3px rgba(0,0,0,.65)) drop-shadow(0 4px 16px rgba(0,0,0,.45));}
   .hero-vtitle::before{content:"";position:absolute;left:-.62em;top:0;bottom:0;width:1px;background:linear-gradient(180deg,transparent,rgba(201,176,114,.7) 18%,rgba(201,176,114,.7) 82%,transparent);}
+  /* ローマ字は題字の脇、この一箇所だけ */
   .hero-vromaji{position:absolute;left:-1.55em;top:.2em;writing-mode:vertical-rl;font-size:.16em;letter-spacing:.5em;text-transform:uppercase;color:var(--gold-soft);white-space:nowrap;}
-
-  /* 角の落款 */
-  .hero-stamp{position:absolute;left:clamp(1.4rem,6vw,5rem);bottom:clamp(7rem,16vw,9.5rem);z-index:3;}
-
-  /* 写真上のコピー帯 */
-  .hero-stage .wrap{position:relative;z-index:3;width:100%;padding-bottom:clamp(2rem,5vw,3.4rem);padding-top:2rem;}
-  .hero-overline{font-size:clamp(.66rem,1.1vw,.74rem);letter-spacing:.5em;color:var(--gold-soft);margin-bottom:1.2rem;display:flex;align-items:center;gap:.9rem;}
-  .hero-overline::before{content:"";width:34px;height:1px;background:var(--gold-soft);opacity:.7;}
+  .hero-stage .wrap-wide{position:relative;z-index:3;width:100%;padding-bottom:clamp(2rem,5vw,3.4rem);padding-top:2rem;}
+  .hero-overline{font-size:clamp(.66rem,1.1vw,.74rem);letter-spacing:.5em;color:var(--gold-soft);margin-bottom:1.2rem;}
   .hero-stage .sub{font-size:clamp(.8rem,1.2vw,.9rem);letter-spacing:.22em;color:#e8dcc4;line-height:2;max-width:40ch;text-shadow:0 1px 8px rgba(0,0,0,.5);}
   .hero-stage .sub b{color:#fff;font-weight:600;}
 
-  /* 下段：紙面のリード＋CTA */
-  .hero-body{position:relative;padding:clamp(2.6rem,5vw,3.8rem) 0 clamp(2.4rem,5vw,3.6rem);}
-  .hero-body::before{content:"";position:absolute;inset:0;background-image:var(--shippou);background-size:44px 44px;opacity:.045;pointer-events:none;-webkit-mask-image:linear-gradient(120deg,transparent 35%,#000 130%);mask-image:linear-gradient(120deg,transparent 35%,#000 130%);}
-  .hero-body .wrap{position:relative;z-index:1;}
-  .hero-lead{font-size:clamp(.98rem,1.4vw,1.12rem);letter-spacing:.1em;line-height:2.5;color:var(--ink-soft);max-width:54ch;text-wrap:pretty;}
-  .em{color:var(--vermilion-deep);font-weight:600;}
-
-  /* hero cta block */
-  .hero-cta-block{margin-top:2.6rem;padding-top:2.3rem;border-top:1px solid var(--line);max-width:54ch;position:relative;}
-  .hero-cta-block::before{content:"";position:absolute;top:-1px;left:0;width:64px;height:1px;background:var(--gold);}
-  .hero-promise{font-size:clamp(1rem,1.5vw,1.16rem);letter-spacing:.08em;line-height:2.35;color:var(--ink);text-wrap:pretty;}
-  .hero-benefits{list-style:none;margin:1.6rem 0 2rem;padding:0;}
-  .hero-benefits li{position:relative;padding:.34rem 0 .34rem 1.6rem;font-size:.92rem;letter-spacing:.05em;line-height:1.9;color:var(--ink-soft);}
-  .hero-benefits li::before{content:"";position:absolute;left:.15rem;top:1.05em;width:7px;height:7px;background:var(--gold);transform:rotate(45deg);box-shadow:0 0 0 1px rgba(184,160,94,.4);}
-  .btn-vermilion{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(165deg,var(--vermilion-soft),var(--vermilion) 55%,var(--vermilion-deep));color:#fbf2e2;text-decoration:none;font-size:clamp(.96rem,1.4vw,1.06rem);font-weight:600;letter-spacing:.16em;padding:.96rem 2.4rem;border-radius:4px;box-shadow:inset 0 0 0 1px rgba(255,240,220,.25),0 14px 28px -15px rgba(168,54,42,.8);transition:transform .15s,box-shadow .25s,filter .2s;}
-  .btn-vermilion:hover{filter:brightness(1.06);transform:translateY(-1px);box-shadow:inset 0 0 0 1px rgba(255,240,220,.3),0 18px 32px -15px rgba(143,44,34,.85);}
+  /* 下段：左に長い地の文、右に一段下げて申し出 */
+  .hero-body{padding:clamp(2.8rem,6vw,5.2rem) 0 clamp(3rem,7vw,6rem);}
+  .hero-body .wrap-wide{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(2rem,5vw,5rem);align-items:start;}
+  .hero-lead{font-size:clamp(1rem,1.45vw,1.14rem);letter-spacing:.1em;line-height:2.55;color:var(--ink-soft);text-wrap:pretty;}
+  .hero-cta-block{margin-top:clamp(0rem,9vw,7.5rem);padding-left:clamp(0rem,2.4vw,2rem);border-left:1px solid var(--line);}
+  .hero-promise{font-size:clamp(1.02rem,1.5vw,1.16rem);letter-spacing:.08em;line-height:2.3;color:var(--ink);text-wrap:pretty;}
+  /* 三行の箇条：◆をやめ、漢数字を振った細い罫の並びに */
+  .hero-benefits{list-style:none;margin:1.5rem 0 2rem;padding:0;counter-reset:bn;border-top:1px solid var(--line);}
+  .hero-benefits li{counter-increment:bn;display:grid;grid-template-columns:1.9rem 1fr;align-items:baseline;padding:.62rem 0;border-bottom:1px solid var(--line-soft);font-size:.92rem;letter-spacing:.05em;line-height:1.9;color:var(--ink-soft);}
+  .hero-benefits li::before{content:counter(bn,cjk-ideographic);font-size:.8rem;color:var(--vermilion);letter-spacing:0;}
+  .btn-vermilion{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(165deg,var(--vermilion-soft),var(--vermilion) 55%,var(--vermilion-deep));color:#fbf2e2;text-decoration:none;font-size:clamp(.96rem,1.4vw,1.06rem);font-weight:600;letter-spacing:.16em;padding:.96rem 2.2rem;border-radius:4px;box-shadow:inset 0 0 0 1px rgba(255,240,220,.25),0 14px 28px -15px rgba(168,54,42,.8);transition:transform .15s,box-shadow .25s,filter .2s;}
+  .btn-vermilion:hover{filter:brightness(1.06);transform:translateY(-1px);}
   .hero-cta-note{margin-top:1.2rem;font-size:.76rem;letter-spacing:.08em;line-height:2;color:var(--muted);}
 
-  /* wagi photo */
-  .wagi-photo{margin:1.8rem 0;position:relative;}
-  .wagi-photo img{display:block;width:100%;height:auto;border:1px solid var(--gold-soft);box-shadow:0 16px 40px -22px rgba(40,28,12,.6);filter:saturate(.9) contrast(1.02);}
-  .wagi-photo::before{content:"";position:absolute;inset:7px;border:1px solid rgba(247,239,224,.6);pointer-events:none;}
-  .wagi-photo-cap{margin-top:.8rem;text-align:center;font-size:.64rem;letter-spacing:.22em;color:var(--muted);}
-
-  /* ── section ── */
-  .section{padding:clamp(3rem,6.5vw,5rem) 0;border-bottom:1px solid var(--line);position:relative;}
-  .section:last-of-type{border-bottom:none;}
-  .sec-label{display:flex;align-items:center;gap:1.1rem;margin-bottom:2.1rem;}
-  .sec-label .seal{align-self:center;}
-  .sec-head{display:flex;flex-direction:column;gap:.32rem;flex:1;min-width:0;}
-  .sec-kicker{font-size:.62rem;letter-spacing:.4em;color:var(--gold);}
-  .sec-titlerow{display:flex;align-items:center;gap:1rem;}
-  .sec-label h2{font-family:'Zen Antique Soft',var(--serif);font-size:1.16rem;letter-spacing:.32em;font-weight:400;color:var(--ink);white-space:nowrap;}
-  .sec-rule{flex:1;height:0;border-top:1px solid var(--gold-soft);position:relative;opacity:.7;}
-  .sec-rule::after{content:"";position:absolute;left:0;right:0;top:2px;border-top:1px solid var(--line);opacity:.6;}
-
-  p.body{font-size:.94rem;letter-spacing:.06em;line-height:2.45;color:var(--ink-soft);margin-bottom:1.3rem;text-wrap:pretty;}
-  p.body:last-child{margin-bottom:0;}
-
-  .highlight{position:relative;background:linear-gradient(180deg,var(--paper-card),var(--paper-warm));border:1px solid var(--line);padding:1.4rem 1.7rem;margin:1.8rem 0;font-size:.9rem;line-height:2.25;color:var(--ink-soft);letter-spacing:.06em;box-shadow:0 10px 26px -22px rgba(40,28,12,.5);}
-  .highlight::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--gold-soft),var(--gold));}
-  .highlight b{color:var(--ink);font-weight:600;}
-
-  .lineage{width:100%;border-collapse:collapse;font-size:.82rem;margin:1.6rem 0;}
-  .lineage th,.lineage td{text-align:left;padding:.7rem .9rem;border-bottom:1px solid var(--line);line-height:1.95;vertical-align:top;}
-  .lineage tr:first-child th,.lineage tr:first-child td{border-top:1px solid var(--gold-soft);}
-  .lineage th{color:var(--vermilion-deep);font-weight:600;white-space:nowrap;width:8rem;letter-spacing:.12em;}
-  .lineage td b{color:var(--ink);font-weight:600;}
-
-  .offering-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;margin-top:1.6rem;}
-  .offering-card{position:relative;background:linear-gradient(180deg,var(--paper-card),var(--paper-warm));border:1px solid var(--line);padding:1.4rem 1.5rem 1.4rem 1.6rem;}
-  .offering-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--gold-soft),var(--gold));}
-  .offering-card .card-title{font-size:.86rem;letter-spacing:.22em;color:var(--ink);font-weight:600;margin-bottom:.6rem;}
-  .offering-card .card-body{font-size:.78rem;letter-spacing:.06em;line-height:2.05;color:var(--muted);}
-
-  .sake-list{list-style:none;margin:1.4rem 0;}
-  .sake-list li{font-size:.88rem;letter-spacing:.08em;line-height:2.05;color:var(--ink-soft);padding:.5rem 0 .5rem 1.4rem;border-bottom:1px dotted var(--line);position:relative;}
-  .sake-list li::before{content:"";position:absolute;left:.15rem;top:1.05em;width:7px;height:7px;border-radius:50%;background:var(--vermilion);box-shadow:0 0 0 3px rgba(168,54,42,.12);}
-  .sake-list li b{color:var(--ink);font-weight:600;}
-  .sake-list li span{color:var(--muted);font-size:.76rem;margin-left:.4rem;}
-  .link-arrow{color:var(--vermilion-deep);text-decoration:none;font-size:.86rem;letter-spacing:.18em;border-bottom:1px solid transparent;transition:border-color .2s;}
-  .link-arrow:hover{border-color:var(--vermilion-deep);}
-
-  /* 今日の中常 */
-  .tdy-date{font-size:.94rem;letter-spacing:.2em;color:var(--vermilion-deep);margin-bottom:1.8rem;font-weight:600;}
-  .tdy-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
-  .tdy-card{position:relative;background:linear-gradient(180deg,var(--paper-card),var(--paper-warm));border:1px solid var(--line);padding:1.5rem 1.6rem;}
-  .tdy-card::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold-soft) 60%,transparent);}
-  .tdy-card::after{content:"";position:absolute;right:8px;top:8px;width:18px;height:18px;border-right:1px solid var(--gold-soft);border-top:1px solid var(--gold-soft);opacity:.6;}
-  .tdy-cap{font-size:.64rem;letter-spacing:.3em;color:var(--vermilion);margin-bottom:1rem;}
-  .tdy-app{margin:1.2rem 0 0;text-align:center;font-size:.76rem;letter-spacing:.14em;line-height:2;}
-  .tdy-app a{color:var(--vermilion-deep);text-decoration:none;border-bottom:1px solid var(--gold-pale);}
-  .tdy-koyomi .kou{font-size:1.2rem;letter-spacing:.08em;color:var(--ink);margin-bottom:.25rem;}
-  .tdy-koyomi .kou .sekki{color:var(--vermilion-deep);font-weight:600;}
-  .tdy-koyomi .yomi{font-size:.78rem;color:var(--muted);letter-spacing:.1em;margin-bottom:1rem;}
-  .tdy-koyomi .tsuki{font-size:.86rem;color:var(--ink-soft);letter-spacing:.08em;}
-  .tdy-issetsu blockquote{margin:0;font-family:'Yuji Syuku',var(--serif);font-size:1.06rem;line-height:2.15;color:#6f514c;letter-spacing:.06em;}
-  .tdy-issetsu .src{display:block;font-family:var(--serif);margin-top:.9rem;font-size:.7rem;color:var(--muted);letter-spacing:.16em;text-align:right;}
-  .tdy-hitokoto .h-date{font-size:.7rem;color:var(--gold);letter-spacing:.16em;margin-bottom:.6rem;}
-  .tdy-hitokoto .h-text{font-size:.92rem;line-height:2.05;color:var(--ink-soft);letter-spacing:.05em;}
+  /* ── 今日の中常（このページの見せ場：一節を縦書きで大きく） ── */
+  .kyo{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .kyo-stage{max-width:1160px;margin:0 auto;padding:clamp(3.4rem,8vw,7rem) clamp(1.25rem,4vw,3.5rem) clamp(2.6rem,6vw,5rem);display:flex;flex-direction:row-reverse;align-items:flex-start;gap:clamp(1.2rem,5vw,5rem);}
+  .kyo-head{writing-mode:vertical-rl;flex-shrink:0;display:flex;gap:.9rem;}
+  .kyo-head h2{font-family:'Zen Antique Soft',var(--serif);font-weight:400;font-size:clamp(1.15rem,1.8vw,1.45rem);letter-spacing:.4em;color:var(--vermilion-deep);}
+  .tdy-date{font-size:.8rem;letter-spacing:.24em;color:var(--muted);}
+  .kyo-cap{font-size:.74rem;letter-spacing:.3em;color:var(--vermilion);margin-block-start:.6rem;}
+  .tdy-date .tcy{text-combine-upright:all;letter-spacing:0;}
+  .kyo-verse{flex:1;min-width:0;display:flex;justify-content:center;}
+  .tdy-issetsu{writing-mode:vertical-rl;height:clamp(21rem,64vh,36rem);max-width:100%;overflow-x:auto;overflow-y:hidden;}
+  .tdy-issetsu blockquote{margin:0;font-family:'Yuji Syuku',var(--serif);font-size:clamp(1.42rem,3.3vw,2.7rem);line-height:1.9;letter-spacing:.12em;color:#4f3a2c;}
+  .tdy-issetsu .src{display:block;font-family:var(--serif);font-size:clamp(.74rem,1vw,.86rem);letter-spacing:.3em;color:var(--muted);text-align:end;margin-block-start:1.4em;}
+  .kyo-sub{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.3fr) minmax(0,1.1fr);border-top:1px solid var(--line);}
+  .kyo-sub > div{padding:1.8rem clamp(1rem,2.4vw,2rem) 2rem;}
+  .kyo-sub > div + div{border-left:1px solid var(--line);}
+  .kyo-sub > div:first-child{padding-left:0;}
+  .kyo-sub > div:last-child{padding-right:0;}
+  .tdy-cap{font-size:.72rem;letter-spacing:.3em;color:var(--vermilion);margin-bottom:.9rem;}
+  .tdy-koyomi .kou{color:var(--ink);margin-bottom:.2rem;line-height:1.6;}
+  .tdy-koyomi .kou .sekki{display:block;font-size:.8rem;letter-spacing:.3em;color:var(--vermilion-deep);font-weight:600;}
+  .tdy-koyomi .kou .ko{display:block;font-size:1.6rem;letter-spacing:.14em;}
+  .tdy-koyomi .yomi{font-size:.78rem;color:var(--muted);letter-spacing:.1em;margin-bottom:.9rem;}
+  .tdy-koyomi .tsuki{font-size:.84rem;color:var(--ink-soft);letter-spacing:.08em;}
+  .tdy-hitokoto .h-date{font-size:.72rem;color:var(--gold);letter-spacing:.16em;margin-bottom:.5rem;}
+  .tdy-hitokoto .h-text{font-size:.92rem;line-height:2.1;color:var(--ink-soft);letter-spacing:.05em;}
   .tdy-tayori ul{list-style:none;margin:0;padding:0;}
-  .tdy-tayori li{font-size:.84rem;line-height:1.8;color:var(--ink-soft);padding:.45rem 0;border-bottom:1px dotted var(--line);letter-spacing:.04em;}
+  .tdy-tayori li{font-size:.84rem;line-height:1.8;color:var(--ink-soft);padding:.4rem 0;border-bottom:1px dotted var(--line);letter-spacing:.04em;}
   .tdy-tayori li:last-child{border-bottom:none;}
   .tdy-tayori li .d{color:var(--gold);font-size:.72rem;letter-spacing:.12em;margin-right:.6em;}
   .tdy-tayori a{color:var(--vermilion-deep);text-decoration:none;border-bottom:1px solid transparent;}
   .tdy-tayori a:hover{border-color:var(--vermilion-deep);}
+  .tdy-more{display:inline-block;margin-top:.9rem;font-size:.74rem;letter-spacing:.2em;}
+  .tdy-app{padding:0 0 2.2rem;font-size:.76rem;letter-spacing:.12em;line-height:2;}
+  .tdy-app a{color:var(--vermilion-deep);text-decoration:none;border-bottom:1px solid var(--gold-pale);}
 
-  /* つながる */
-  .tsunagaru{max-width:700px;margin:0 auto;padding:3.4rem 1.5rem 0;}
-  .tg-lead{text-align:center;font-size:1.04rem;line-height:2.15;color:var(--ink);letter-spacing:.06em;margin:0 0 .7rem;}
-  .tg-sub{text-align:center;font-size:.82rem;line-height:1.95;color:var(--muted);letter-spacing:.06em;margin:0 0 2.2rem;}
-  .tg-card{position:relative;background:linear-gradient(180deg,var(--paper-card),var(--paper-warm));border:1px solid var(--line);padding:2.1rem 1.9rem;box-shadow:0 14px 34px -26px rgba(40,28,12,.55);}
-  .tg-card::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold-soft) 20%,var(--gold) 50%,var(--gold-soft) 80%,transparent);}
-  .tg-cap{font-size:.66rem;letter-spacing:.3em;color:var(--gold);margin-bottom:1.3rem;text-align:center;}
-  .tg-form{display:flex;flex-direction:column;gap:.95rem;max-width:390px;margin:0 auto;}
+  /* ── つながる（朝の写真と記帳） ── */
+  .tsunagaru{padding:clamp(3.2rem,7vw,6rem) 0;}
+  .tg-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(1.8rem,5vw,4.5rem);align-items:center;}
+  .tg-photo{aspect-ratio:3/4;}
+  .tg-photo img{object-position:center 30%;}
+  .tg-lead{font-size:clamp(1.06rem,1.6vw,1.26rem);line-height:2.1;color:var(--ink);letter-spacing:.06em;margin:0 0 .7rem;}
+  .tg-sub{font-size:.84rem;line-height:2;color:var(--muted);letter-spacing:.06em;margin:0 0 1.9rem;}
+  .tg-card{background:var(--paper-card);border:1px solid var(--line);padding:clamp(1.5rem,3vw,2.2rem) clamp(1.2rem,3vw,2rem);}
+  .tg-cap{font-size:.7rem;letter-spacing:.3em;color:var(--gold);margin-bottom:1.2rem;}
+  .tg-form{display:flex;flex-direction:column;gap:.95rem;max-width:420px;}
   .tg-form label{font-size:.74rem;letter-spacing:.1em;color:var(--muted);margin-bottom:.35rem;display:block;}
   .tg-form input{width:100%;font-family:var(--serif);font-size:.96rem;color:var(--ink);background:#fffdf8;border:1px solid var(--line);border-radius:3px;padding:.74rem .95rem;letter-spacing:.04em;}
   .tg-form input:focus{outline:none;border-color:var(--gold-soft);box-shadow:0 0 0 3px rgba(154,125,60,.14);}
   .tg-submit{margin-top:.6rem;background:linear-gradient(165deg,var(--vermilion-soft),var(--vermilion) 55%,var(--vermilion-deep));color:#fbf2e2;border:none;font-family:var(--serif);font-size:1.02rem;font-weight:600;letter-spacing:.16em;padding:.96rem;border-radius:4px;cursor:pointer;box-shadow:inset 0 0 0 1px rgba(255,240,220,.25),0 14px 28px -15px rgba(168,54,42,.8);transition:filter .2s;}
   .tg-submit:hover{filter:brightness(1.06);}
-  .tg-note{text-align:center;font-size:.72rem;line-height:1.95;color:var(--muted);letter-spacing:.06em;margin-top:1.2rem;}
-  .tg-line{text-align:center;margin-top:1.9rem;padding-top:1.7rem;border-top:1px dotted var(--line);}
-  .tg-line p{font-size:.84rem;line-height:1.95;color:var(--ink-soft);letter-spacing:.05em;margin:0 0 1.1rem;}
-  .tg-line-btn{display:inline-flex;align-items:center;gap:.6rem;background:#06C755;color:#fff;text-decoration:none;padding:.72rem 1.95rem;border-radius:6px;font-size:.82rem;letter-spacing:.16em;box-shadow:0 8px 22px -12px rgba(6,199,85,.7);}
+  .tg-note{font-size:.72rem;line-height:1.95;color:var(--muted);letter-spacing:.06em;margin-top:1.2rem;}
+  .tg-line{margin-top:1.7rem;padding-top:1.5rem;border-top:1px dotted var(--line);}
+  .tg-line p{font-size:.84rem;line-height:1.95;color:var(--ink-soft);letter-spacing:.05em;margin:0 0 1rem;}
+  .tg-line-btn{display:inline-flex;align-items:center;gap:.6rem;background:#06C755;color:#fff;text-decoration:none;padding:.72rem 1.95rem;border-radius:6px;font-size:.82rem;letter-spacing:.16em;}
 
-  /* banner */
-  .nb-wrap{padding:2.6rem 1.3rem;max-width:800px;margin:0 auto;}
-  .nb-link{display:block;text-decoration:none;position:relative;overflow:hidden;border:1px solid var(--gold-soft);}
-  .nb-link img{display:block;width:100%;height:230px;object-fit:cover;object-position:center 30%;filter:saturate(.95);}
-  .nb-over{position:absolute;inset:0;background:linear-gradient(to top,rgba(30,22,16,.86) 38%,rgba(30,22,16,.32) 100%);display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:1.7rem 1.3rem;}
-  .nb-over .k{margin:0 0 .35rem;color:var(--gold-soft);font-size:.7rem;letter-spacing:.32em;}
-  .nb-over .t{margin:0 0 1.1rem;color:#f5ede0;font-size:1.2rem;letter-spacing:.22em;font-weight:500;}
-  .nb-over .b{display:inline-block;padding:.55em 1.9em;border:1px solid var(--gold-soft);color:var(--gold-soft);font-size:.74rem;letter-spacing:.22em;}
+  /* ── 御案内二つ：写本は紙の上に、能楽堂は頁幅いっぱいに ── */
+  .ol{padding:0 0 clamp(3rem,7vw,5.5rem);}
+  .ol-link{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(1.5rem,4vw,3.5rem);align-items:end;text-decoration:none;color:inherit;}
+  .ol-link .ph{aspect-ratio:4/3;}
+  .ol-text{display:block;padding-bottom:.4rem;}
+  .ol-text .k,.ol-text .t{display:block;}
+  .ol-text .k{font-size:.74rem;letter-spacing:.24em;color:var(--muted);margin-bottom:.8rem;}
+  .ol-text .t{font-size:clamp(1.3rem,2.4vw,1.8rem);letter-spacing:.14em;line-height:1.7;color:var(--ink);margin-bottom:1.5rem;}
+  .ol-text .b{display:inline-block;font-size:.84rem;letter-spacing:.16em;color:var(--vermilion-deep);border-bottom:1px solid var(--vermilion-deep);padding-bottom:.2rem;}
+  .ol-link:hover .b{color:var(--vermilion);}
 
-  /* bunko / voices band */
-  .band-shippou{position:relative;}
-  .band-shippou::before{content:"";position:absolute;inset:0;background-image:var(--shippou);background-size:48px 48px;opacity:.045;pointer-events:none;}
-  .bunko-link{padding:clamp(2.6rem,5vw,4rem) 0;border-bottom:1px solid var(--line);background:linear-gradient(rgba(228,215,185,.28),transparent 62%);}
-  .bunko-link .inner{position:relative;max-width:700px;margin:0 auto;text-align:center;}
-  .bunko-link .seal{margin:0 auto 1.5rem;}
-  .bunko-link p{font-size:clamp(.88rem,1.2vw,1rem);letter-spacing:.1em;line-height:2.35;color:var(--ink-soft);margin-bottom:2rem;}
-  .btn-ink{display:inline-flex;align-items:center;gap:.7rem;padding:.92rem 2.5rem;border:1px solid var(--gold);background:linear-gradient(160deg,var(--sumi),var(--ink));color:var(--paper);text-decoration:none;font-size:.8rem;letter-spacing:.3em;font-family:var(--serif);box-shadow:inset 0 0 0 1px rgba(184,160,94,.18),0 10px 24px -16px rgba(30,22,16,.7);transition:filter .2s;}
-  .btn-ink:hover{filter:brightness(1.12);}
+  .noh{position:relative;display:block;text-decoration:none;color:#f5ede0;height:clamp(340px,52vw,600px);overflow:hidden;background:var(--ink);}
+  .noh img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;filter:saturate(.92);}
+  .noh::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(24,17,11,.88) 0%,rgba(24,17,11,.35) 42%,transparent 70%);}
+  .noh-text{position:absolute;left:0;right:0;bottom:0;z-index:1;padding-bottom:clamp(1.6rem,4vw,3rem);}
+  .noh-text .k{font-size:.74rem;letter-spacing:.3em;color:var(--gold-pale);margin-bottom:.4rem;}
+  .noh-text .t{font-size:clamp(1.5rem,3.4vw,2.5rem);letter-spacing:.18em;margin-bottom:.8rem;font-weight:500;}
+  .noh-text #nbNext{color:#e8dcc4;font-size:.8rem;letter-spacing:.14em;margin-bottom:1rem;}
+  .noh-text .b{display:inline-block;font-size:.8rem;letter-spacing:.2em;color:#f5ede0;border-bottom:1px solid var(--gold-soft);padding-bottom:.2rem;}
 
-  .voices{padding:clamp(3rem,6.5vw,5rem) 0;border-bottom:1px solid var(--line);background:linear-gradient(rgba(228,215,185,.24),transparent 80%);}
-  .voice-list{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem;margin-top:2rem;}
-  .voice-card{position:relative;background:linear-gradient(180deg,var(--paper-card),var(--paper-warm));border:1px solid var(--line);padding:1.6rem 1.5rem 1.3rem;display:flex;flex-direction:column;}
-  .voice-card::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,var(--gold-soft),transparent);}
-  .voice-mark{font-size:2rem;line-height:.7;color:var(--gold-soft);margin-bottom:.5rem;font-family:var(--serif);}
-  .voice-text{font-size:.85rem;letter-spacing:.06em;line-height:2.25;color:var(--ink-soft);flex:1;text-wrap:pretty;}
-  .voice-attr{font-size:.66rem;letter-spacing:.22em;color:var(--muted);margin-top:1.1rem;text-align:right;border-top:1px dotted var(--line);padding-top:.7rem;}
+  /* ── 四つの扉：札をやめ、写真を添えた目次として縦に流す ── */
+  .tobira{padding:clamp(3.6rem,8vw,7rem) 0 clamp(3rem,7vw,6rem);}
+  .tobira-intro{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(1.5rem,5vw,5rem);align-items:end;margin-bottom:clamp(2.2rem,5vw,3.6rem);}
+  .tobira-intro h2{font-weight:500;font-size:clamp(2rem,4.6vw,3.4rem);letter-spacing:.24em;line-height:1.2;color:var(--ink);white-space:nowrap;}
+  .tobira-intro p{font-size:.94rem;line-height:2.15;letter-spacing:.05em;color:var(--ink-soft);max-width:44ch;}
+  .tobira-list{list-style:none;counter-reset:tb;border-top:2px solid var(--ink);}
+  .tb{counter-increment:tb;display:grid;grid-template-columns:3.6rem minmax(0,1fr) minmax(0,.82fr);gap:clamp(1.2rem,3vw,2.6rem);padding:clamp(1.6rem,3.4vw,2.4rem) 0;border-bottom:1px solid var(--line);}
+  .tb-title{writing-mode:vertical-rl;font-family:'Zen Antique Soft',var(--serif);font-weight:400;font-size:1.18rem;letter-spacing:.22em;line-height:1.5;color:var(--ink);justify-self:center;}
+  .tb-title::before{content:counter(tb,cjk-ideographic);display:block;color:var(--vermilion);font-size:.82rem;margin-bottom:.8em;}
+  .tb-text{align-self:center;}
+  .tb-text p{font-size:.96rem;line-height:2.2;letter-spacing:.05em;color:var(--ink-soft);}
+  .tb-links{display:flex;flex-direction:column;align-items:flex-start;gap:.35rem;margin-top:1.1rem;}
+  .tb-links a{font-size:.8rem;letter-spacing:.14em;color:var(--vermilion-deep);text-decoration:none;border-bottom:1px solid var(--gold-pale);}
+  .tb-links a:hover{border-color:var(--vermilion-deep);}
+  .tb .ph{aspect-ratio:4/3;}
+  .tb:nth-child(even) .ph{aspect-ratio:1/1;}
 
-  .cta-wrap{padding:clamp(2.8rem,6vw,4.2rem) 0;border-bottom:1px solid var(--line);text-align:center;}
-  .cta-lead{font-size:.9rem;letter-spacing:.14em;line-height:2.2;color:var(--ink-soft);margin-bottom:2.1rem;}
+  /* ── 豐中常文庫：写本の頁を大きく、左に ── */
+  .bunko-link{padding:clamp(3rem,7vw,6rem) 0;background:var(--paper-3);}
+  .bunko-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(1.8rem,5vw,5rem);align-items:center;}
+  .bunko-grid .ph{aspect-ratio:3/4;max-height:620px;}
+  .bunko-grid .ph img{object-position:center 20%;}
+  .bunko-text p{font-size:clamp(.96rem,1.4vw,1.1rem);letter-spacing:.08em;line-height:2.4;color:var(--ink-soft);margin-bottom:2rem;max-width:30em;}
+  .btn-ink{display:inline-flex;align-items:center;gap:.7rem;padding:.92rem 2.3rem;border:1px solid var(--sumi);background:var(--sumi);color:var(--paper);text-decoration:none;font-size:.82rem;letter-spacing:.28em;font-family:var(--serif);transition:filter .2s;}
+  .btn-ink:hover{filter:brightness(1.25);}
+
+  /* ── 参加者の声：一人の声を大きく、残りは控えめに流す ── */
+  .voices{padding:clamp(3.6rem,8vw,7rem) 0 clamp(3rem,6vw,5rem);}
+  .voice-feature{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(1.8rem,5vw,4.5rem);align-items:center;margin-bottom:clamp(3rem,7vw,5.5rem);}
+  .voice-feature .ph{aspect-ratio:16/10;}
+  .voice-feature .ph img{object-position:center 35%;}
+  .vf-body h2{font-weight:500;font-size:.86rem;letter-spacing:.42em;color:var(--vermilion-deep);margin-bottom:1.6rem;}
+  .vf-quote p{font-size:clamp(1.18rem,2.1vw,1.5rem);line-height:2.15;letter-spacing:.07em;color:var(--ink);text-wrap:pretty;}
+  .vf-quote .vf-attr{margin-top:1.3rem;font-size:.74rem;letter-spacing:.18em;color:var(--muted);}
+  .voice-stream{list-style:none;columns:2;column-gap:clamp(2rem,5vw,4.5rem);column-rule:1px solid var(--line-soft);}
+  .voice-stream li{break-inside:avoid;padding:0 0 1.15rem;margin-bottom:1.15rem;border-bottom:1px dotted var(--line);}
+  .voice-text{font-size:.86rem;letter-spacing:.05em;line-height:2.1;color:var(--ink-soft);text-wrap:pretty;}
+  .voice-attr{display:block;margin-top:.4rem;font-size:.68rem;letter-spacing:.16em;color:var(--muted);}
+
+  /* ── 結び：御木曳きの写真を頁幅いっぱいに、申し出は左右に並べる ── */
+  .okihiki{display:block;width:100%;height:clamp(240px,42vw,520px);}
+  .okihiki img{object-position:center 45%;}
+  .cta-pair{display:grid;grid-template-columns:1fr 1fr;padding:clamp(2.6rem,6vw,4.4rem) 0;border-bottom:1px solid var(--line);}
+  .cta-pair > div{padding:0 clamp(1rem,3vw,3rem);}
+  .cta-pair > div:first-child{padding-left:0;}
+  .cta-pair > div + div{border-left:1px solid var(--line);}
+  .cta-lead{font-size:.92rem;letter-spacing:.1em;line-height:2.2;color:var(--ink-soft);margin-bottom:1.6rem;}
+  .cta-note{margin-top:1.1rem;font-size:.72rem;letter-spacing:.08em;color:var(--muted);}
 
   /* contact */
-  .contact{padding:clamp(3.2rem,6vw,5.2rem) 0;background:linear-gradient(rgba(228,215,185,.3),transparent 72%);}
-  .contact .inner{max-width:660px;margin:0 auto;text-align:center;}
-  .contact .seal{margin:0 auto 1.7rem;}
+  .contact{padding:clamp(3.2rem,6vw,5.2rem) 0;}
+  .contact .inner{max-width:660px;margin:0 auto;padding:0 1.25rem;text-align:center;}
   .contact-desc{font-size:clamp(.88rem,1.2vw,1rem);letter-spacing:.1em;line-height:2.45;color:var(--ink-soft);margin-bottom:2.3rem;}
   .sns-row{display:flex;justify-content:center;flex-wrap:wrap;gap:1rem;}
-  .sns-btn{display:inline-flex;align-items:center;gap:.7rem;padding:.82rem 2rem;border:1px solid var(--line);background:var(--paper-card);color:var(--ink-soft);text-decoration:none;font-size:.78rem;letter-spacing:.26em;transition:border-color .25s,background .25s,transform .25s,color .25s;font-family:var(--serif);}
-  .sns-btn:hover{border-color:var(--gold-soft);background:#fff;transform:translateY(-2px);color:var(--ink);}
+  .sns-btn{display:inline-flex;align-items:center;gap:.7rem;padding:.82rem 2rem;border:1px solid var(--line);background:var(--paper-card);color:var(--ink-soft);text-decoration:none;font-size:.78rem;letter-spacing:.26em;transition:border-color .25s,background .25s,color .25s;font-family:var(--serif);}
+  .sns-btn:hover{border-color:var(--gold-soft);background:#fff;color:var(--ink);}
   .sns-btn svg{width:18px;height:18px;flex-shrink:0;}
   .contact-note{margin-top:1.9rem;font-size:.68rem;letter-spacing:.2em;color:var(--muted);}
 
@@ -281,24 +267,46 @@
   footer .f-links a:hover{color:#e8dcc0;}
   footer .f-links span{color:#3a3326;font-size:.65rem;}
 
+  @media (max-width:860px){
+    .hero-body .wrap-wide{grid-template-columns:1fr;}
+    .hero-cta-block{margin-top:0;padding-left:0;border-left:none;padding-top:2rem;border-top:1px solid var(--line);}
+    .kyo-sub{grid-template-columns:1fr;}
+    .kyo-sub > div{padding:1.5rem 0;}
+    .kyo-sub > div + div{border-left:none;border-top:1px solid var(--line);}
+    .tg-grid{grid-template-columns:1fr;}
+    .tg-photo{aspect-ratio:16/10;}
+    .ol-link{grid-template-columns:1fr;gap:1.4rem;}
+    .tobira-intro{grid-template-columns:1fr;gap:1.1rem;}
+    .tb{grid-template-columns:2.6rem minmax(0,1fr);row-gap:1.2rem;}
+    .tb .ph{grid-column:1 / -1;grid-row:1;aspect-ratio:16/10;}
+    .tb:nth-child(even) .ph{aspect-ratio:16/10;}
+    .tb-title{font-size:1.08rem;}
+    .bunko-grid{grid-template-columns:1fr;}
+    .bunko-grid .ph{aspect-ratio:4/3;}
+    .voice-feature{grid-template-columns:1fr;}
+    .voice-stream{columns:1;}
+    .cta-pair{grid-template-columns:1fr;}
+    .cta-pair > div{padding:0;}
+    .cta-pair > div + div{border-left:none;border-top:1px solid var(--line);margin-top:2.2rem;padding-top:2.2rem;}
+  }
   @media (max-width:760px){
     .hero-stage{min-height:clamp(400px,62vh,560px);}
     .hero-vtitle{font-size:clamp(3rem,15vw,5.4rem);top:1.6rem;right:1.4rem;}
-    .hero-stamp{bottom:auto;top:1.8rem;left:1.4rem;}
-    .tdy-grid{grid-template-columns:1fr;}
+    .kyo-stage{gap:1rem;}
   }
   @media (max-width:640px){
-    .offering-grid{grid-template-columns:1fr;}
-    .voice-list{grid-template-columns:1fr;}
     .topbar .inner{min-height:56px;flex-wrap:wrap;padding-top:.6rem;padding-bottom:.6rem;gap:.3rem 1rem;}
     .topnav{gap:.7rem 1.1rem;font-size:.7rem;letter-spacing:.16em;}
     .btn-vermilion{width:100%;justify-content:center;}
+    .tobira-intro h2{font-size:1.9rem;}
+    .noh-text .t{font-size:1.3rem;letter-spacing:.12em;}
   }
 </style>
 <script>if(location.search.indexOf('skipgc')>-1){try{localStorage.setItem('skipgc','t')}catch(e){}}</script>
 <script data-goatcounter="https://nakatokojuku.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
+
 
 <div class="topbar">
   <div class="inner">
@@ -319,26 +327,20 @@
   <div class="hero-stage">
     <div class="bg"></div>
     <div class="scrim"></div>
-    <div class="asanoha-ov"></div>
-    <div class="foil-top"></div>
 
     <div class="hero-vtitle">
       <span class="hero-vromaji">Nakatoko Juku</span>
       中常<span class="foilchar">塾</span>
     </div>
 
-    <div class="hero-stamp">
-      <div class="seal lg" style="width:58px;height:58px;font-size:1.18rem;">中常</div>
-    </div>
-
-    <div class="wrap">
+    <div class="wrap-wide">
       <div class="hero-overline">神宮を丑寅で守る、令和の岡崎</div>
       <div class="sub">なかとこじゅく　<b>塾主：松浦茂樹</b><br>令和八年五月二十五日 開塾</div>
     </div>
   </div>
 
   <div class="hero-body">
-    <div class="wrap">
+    <div class="wrap-wide">
       <p class="hero-lead">
         神代は、遠い昔ではありません。今日の、あなたの一日のただ中に在ります。中常塾は、度會神道の学びと「和儀®」のお稽古を通じて、その神代にふれ直す ── <span class="em">日本人の肚を再発見する場</span>です。<br>ここ岡崎は、神宮から見て丑寅（東北）にあたる地。出雲に発った一つの家の物語が、長い道のりの果てにこの地へ流れ着いた ── 塾主の家には、そう伝わります。その物語を負う者として、神武以前から続く神祇の道を、日々の稽古のなかに継いでいます。
       </p>
@@ -359,164 +361,185 @@
   </div>
 </header>
 
-<section class="section reveal" id="kyou" style="border-top:1px solid var(--line);">
-  <div class="wrap">
-    <div class="sec-label">
-      <div class="seal sq">今</div>
-      <div class="sec-head">
-        <div class="sec-kicker">KYO NO NAKATOKO</div>
-        <div class="sec-titlerow"><h3><span class="em">今日の中常</span></h3><span class="sec-rule"></span></div>
-      </div>
+<section class="kyo reveal" id="kyou">
+  <div class="kyo-stage">
+    <div class="kyo-head">
+      <h2>今日の中常</h2>
+      <div class="tdy-date" id="tdyDate"></div>
+      <div class="kyo-cap">今日の一節</div>
     </div>
-    <div class="tdy-date" id="tdyDate"></div>
-    <div class="tdy-grid">
-      <div class="tdy-card tdy-koyomi"><div class="tdy-cap">今日の暦</div><div id="tdyKoyomi"></div></div>
-      <div class="tdy-card tdy-issetsu"><div class="tdy-cap">今日の一節</div><div id="tdyIssetsu"></div></div>
-      <div class="tdy-card tdy-hitokoto"><div class="tdy-cap">塾主の一言</div><div id="tdyHitokoto"></div></div>
-      <div class="tdy-card tdy-tayori"><div class="tdy-cap">新着のたより・お知らせ</div><ul id="tdyTayori"></ul><a href="/tayori/" style="display:inline-block;margin-top:.9rem;font-size:.74rem;letter-spacing:.2em;color:var(--vermilion-deep);text-decoration:none;">これまでのたよりを読む ▸</a></div>
+    <div class="kyo-verse">
+      <div class="tdy-issetsu" id="tdyIssetsu"></div>
+    </div>
+  </div>
+  <div class="wrap-wide">
+    <div class="kyo-sub">
+      <div class="tdy-koyomi"><div class="tdy-cap">今日の暦</div><div id="tdyKoyomi"></div></div>
+      <div class="tdy-hitokoto"><div class="tdy-cap">塾主の一言</div><div id="tdyHitokoto"></div></div>
+      <div class="tdy-tayori"><div class="tdy-cap">新着のたより・お知らせ</div><ul id="tdyTayori"></ul><a class="tdy-more" href="/tayori/">これまでのたよりを読む ▸</a></div>
     </div>
     <p class="tdy-app"><a href="/app/">お手元でも ── 中常塾アプリ（ホーム画面に追加して、今日の一節・たより・次回開催をひらく） ▸</a></p>
   </div>
 </section>
 
 <div class="tsunagaru reveal" id="tsunagaru">
-  <p class="tg-lead">毎朝、神代にふれる一節を ── <span class="em">「中常だより」</span>をお届けします。</p>
-  <p class="tg-sub">受け取るほどに、日々の真ん中に一本の芯が通っていきます。いつでも、そっと離れられます。まずは、明日の朝から。</p>
-  <div class="tg-card">
-    <div id="tg-formwrap">
-      <div class="tg-cap">御芳名を記す ── おたよりで受け取る</div>
-      <form class="tg-form" id="tg-form" method="POST" target="tg-sink" action="https://docs.google.com/forms/d/e/1FAIpQLScS4IU0BgWbMl9LWngXLoZl7EM59iC5ligGY7sY1jAXpiALoA/formResponse">
-        <div>
-          <label for="tg-name">御芳名</label>
-          <input id="tg-name" type="text" name="entry.375573805" placeholder="松浦 茂樹" autocomplete="name" required>
+  <div class="wrap-wide tg-grid">
+    <figure class="ph tg-photo"><img src="/goshinshu/photo_asama_sunrise.jpg" alt="朝熊山の山頂で迎える夜明け。岩場に置いた法螺貝の向こうに朝日が昇る" width="750" height="1000" loading="lazy" decoding="async"></figure>
+    <div>
+      <p class="tg-lead">毎朝、神代にふれる一節を ── <span class="em">「中常だより」</span>をお届けします。</p>
+      <p class="tg-sub">受け取るほどに、日々の真ん中に一本の芯が通っていきます。いつでも、そっと離れられます。まずは、明日の朝から。</p>
+      <div class="tg-card">
+        <div id="tg-formwrap">
+          <div class="tg-cap">御芳名を記す ── おたよりで受け取る</div>
+          <form class="tg-form" id="tg-form" method="POST" target="tg-sink" action="https://docs.google.com/forms/d/e/1FAIpQLScS4IU0BgWbMl9LWngXLoZl7EM59iC5ligGY7sY1jAXpiALoA/formResponse">
+            <div>
+              <label for="tg-name">御芳名</label>
+              <input id="tg-name" type="text" name="entry.375573805" placeholder="松浦 茂樹" autocomplete="name" required>
+            </div>
+            <div>
+              <label for="tg-email">お届け先メール</label>
+              <input id="tg-email" type="email" name="entry.283975890" placeholder="namae@example.jp" autocomplete="email" required>
+            </div>
+            <input type="hidden" name="fvv" value="1">
+            <input type="hidden" name="pageHistory" value="0">
+            <button class="tg-submit" type="submit">明日の朝から受け取る　▸</button>
+          </form>
+          <p class="tg-note">折々のことばと、奉納・お稽古のご案内をお送りします。お名前は、中常だよりの呼びかけにのみ用います。</p>
         </div>
-        <div>
-          <label for="tg-email">お届け先メール</label>
-          <input id="tg-email" type="email" name="entry.283975890" placeholder="namae@example.jp" autocomplete="email" required>
+        <div id="tg-thanks" style="display:none;text-align:center;padding:.4rem 0 .2rem;">
+          <p style="font-size:1.06rem;line-height:2;color:var(--ink);letter-spacing:.06em;margin:0 0 .6rem;">記帳、ありがとうございます。</p>
+          <p style="font-size:.9rem;line-height:2;color:var(--ink-soft);letter-spacing:.05em;margin:0;">明日の朝、はじめの一節が、あなたのもとへ届きます。もしよろしければ、毎朝そっと手元へ ── 下のLINEでも繋がっておけます。</p>
         </div>
-        <input type="hidden" name="fvv" value="1">
-        <input type="hidden" name="pageHistory" value="0">
-        <button class="tg-submit" type="submit">明日の朝から受け取る　▸</button>
-      </form>
-      <p class="tg-note">折々のことばと、奉納・お稽古のご案内をお送りします。お名前は、中常だよりの呼びかけにのみ用います。</p>
-    </div>
-    <div id="tg-thanks" style="display:none;text-align:center;padding:.4rem 0 .2rem;">
-      <p style="font-size:1.06rem;line-height:2;color:var(--ink);letter-spacing:.06em;margin:0 0 .6rem;">記帳、ありがとうございます。</p>
-      <p style="font-size:.9rem;line-height:2;color:var(--ink-soft);letter-spacing:.05em;margin:0;">明日の朝、はじめの一節が、あなたのもとへ届きます。もしよろしければ、毎朝そっと手元へ ── 下のLINEでも繋がっておけます。</p>
-    </div>
-    <iframe name="tg-sink" title="送信" style="display:none;" tabindex="-1" aria-hidden="true"></iframe>
-    <div class="tg-line">
-      <p>毎朝そっと、もっと手軽に手元へ ──　LINEでも繋がっておきますか。</p>
-      <a class="tg-line-btn" href="https://lin.ee/vDCT7cG" target="_blank" rel="noopener noreferrer">
-        <svg viewBox="0 0 24 24" width="19" height="19" fill="#fff" aria-hidden="true" style="flex-shrink:0;"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.105.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
-        LINEで繋がる
-      </a>
+        <iframe name="tg-sink" title="送信" style="display:none;" tabindex="-1" aria-hidden="true"></iframe>
+        <div class="tg-line">
+          <p>毎朝そっと、もっと手軽に手元へ ──　LINEでも繋がっておきますか。</p>
+          <a class="tg-line-btn" href="https://lin.ee/vDCT7cG" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" width="19" height="19" fill="#fff" aria-hidden="true" style="flex-shrink:0;"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.105.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+            LINEで繋がる
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="nb-wrap reveal">
-  <a class="nb-link" href="https://nakatokojuku.jp/yamatohime-online/">
-    <img src="https://nakatokojuku.jp/倭姫命世記/images/page_00.jpg" alt="出口延佳校合『倭姫命世記』寛文九年書写本" width="2000" height="1500" loading="lazy" decoding="async">
-    <div class="nb-over">
-      <p class="k">オンライン私塾 中常塾 ── 十一月開講</p>
-      <p class="t">全国どこからでも、神代の物語を。</p>
-      <span class="b">倭姫命世記 オンライン講義 ── 御案内 ▸</span>
-    </div>
-  </a>
+<div class="ol reveal">
+  <div class="wrap-wide">
+    <a class="ol-link" href="https://nakatokojuku.jp/yamatohime-online/">
+      <span class="ph"><img src="https://nakatokojuku.jp/倭姫命世記/images/page_00.jpg" alt="出口延佳校合『倭姫命世記』寛文九年書写本" width="2000" height="1500" loading="lazy" decoding="async"></span>
+      <span class="ol-text">
+        <span class="k">オンライン私塾 中常塾 ── 十一月開講</span>
+        <span class="t">全国どこからでも、神代の物語を。</span>
+        <span class="b">倭姫命世記 オンライン講義 ── 御案内 ▸</span>
+      </span>
+    </a>
+  </div>
 </div>
 
-<div class="nb-wrap reveal" style="padding-top:0;">
-  <a class="nb-link" href="https://nakatokojuku.jp/taiken/">
-    <img src="https://nakatokojuku.jp/taiken/photo_group.jpg" alt="岡崎城二の丸能楽堂" width="1600" height="911" loading="lazy" decoding="async">
-    <div class="nb-over">
+<a class="noh reveal" href="https://nakatokojuku.jp/taiken/">
+  <img src="https://nakatokojuku.jp/taiken/photo_group.jpg" alt="岡崎城二の丸能楽堂" width="1600" height="911" loading="lazy" decoding="async">
+  <div class="noh-text">
+    <div class="wrap-wide">
       <p class="k">中常塾 能楽堂プログラム</p>
       <p class="t">能舞台で、肚が目覚める。</p>
-      <p id="nbNext" style="margin:0 0 1rem;color:#e8dcc4;font-size:.76rem;letter-spacing:.16em;">開催日程は詳細ページをご覧ください</p>
+      <p id="nbNext">開催日程は詳細ページをご覧ください</p>
       <span class="b">講義・お稽古 ── 詳細はこちら ▸</span>
     </div>
-  </a>
-</div>
+  </div>
+</a>
 
-<section class="section reveal" id="tobira" style="border-top:1px solid var(--line);">
-  <div class="wrap">
-    <div class="sec-label">
-      <div class="seal sq">扉</div>
-      <div class="sec-head">
-        <div class="sec-kicker">YOTTSU NO TOBIRA</div>
-        <div class="sec-titlerow"><h2>四つの扉</h2><span class="sec-rule"></span></div>
-      </div>
+<section class="tobira reveal" id="tobira">
+  <div class="wrap-wide">
+    <div class="tobira-intro">
+      <h2>四つの扉</h2>
+      <p>塾名の由来、塾主の家の物語、神宮への奉納、そして学びと稽古。くわしくは「中常塾について」の各節でお読みいただけます。ここでは、それぞれの入口だけを開けておきます。</p>
     </div>
-    <p style="font-size:.96rem;line-height:2.1;letter-spacing:.05em;color:var(--ink-soft);margin:0 0 1.8rem;">塾名の由来、塾主の家の物語、神宮への奉納、そして学びと稽古。くわしくは「中常塾について」の各節でお読みいただけます。ここでは、それぞれの入口だけを開けておきます。</p>
-    <div class="tdy-grid">
-      <div class="tdy-card"><div class="tdy-cap">塾名「中常」の由来</div><p style="margin:0;font-size:.92rem;line-height:2;">伊勢外宮の神主・出口延佳が「中常ノ道ヲ神道トセル」と説いた言葉に由来します。今というこの一点が、そのまま永遠である ── その足場の名です。</p><div style="margin-top:.5rem;"><a href="https://nakatokojuku.jp/nakatokojuku/#yurai" style="display:inline-block;margin:.5rem 1.2rem 0 0;font-size:.78rem;letter-spacing:.14em;color:var(--vermilion-deep);text-decoration:none;border-bottom:1px solid var(--gold-pale);">由来を読む ▸</a><a href="/bunko/nakatoko-no-michi/" style="display:inline-block;margin:.5rem 1.2rem 0 0;font-size:.78rem;letter-spacing:.14em;color:var(--vermilion-deep);text-decoration:none;border-bottom:1px solid var(--gold-pale);">解説「中常」という名 ▸</a></div></div>
-      <div class="tdy-card"><div class="tdy-cap">塾主のルーツと伊雜宮</div><p style="margin:0;font-size:.92rem;line-height:2;">出雲族・登美氏から奥州安倍氏、松浦へ。伊雜宮を造営した伊佐波登美神に連なる家の物語が、塾主の家には伝わります。</p><div style="margin-top:.5rem;"><a href="https://nakatokojuku.jp/nakatokojuku/#roots" style="display:inline-block;margin:.5rem 1.2rem 0 0;font-size:.78rem;letter-spacing:.14em;color:var(--vermilion-deep);text-decoration:none;border-bottom:1px solid var(--gold-pale);">物語を読む ▸</a><a href="/bunko/matsuura-abe/" style="display:inline-block;margin:.5rem 1.2rem 0 0;font-size:.78rem;letter-spacing:.14em;color:var(--vermilion-deep);text-decoration:none;border-bottom:1px solid var(--gold-pale);">家の言い伝えを史料と歩く ▸</a><a href="/bunko/ayumi-no-chizu/" style="display:inline-block;margin:.5rem 1.2rem 0 0;font-size:.78rem;letter-spacing:.14em;color:var(--vermilion-deep);text-decoration:none;border-bottom:1px solid var(--gold-pale);">あなたの神話の地図をひらく ▸</a></div></div>
-      <div class="tdy-card"><div class="tdy-cap">奉納事業 ── 懸税と御神酒</div><p style="margin:0;font-size:.92rem;line-height:2;">神嘗祭へ稲穂の束「懸税」を捧げ、御神酒を醸して奉る。2014年から続く奉納と、祭典への奉仕の記録です。</p><div style="margin-top:.5rem;"><a href="https://nakatokojuku.jp/nakatokojuku/#hounou" style="display:inline-block;margin:.5rem 1.2rem 0 0;font-size:.78rem;letter-spacing:.14em;color:var(--vermilion-deep);text-decoration:none;border-bottom:1px solid var(--gold-pale);">奉納を読む ▸</a><a href="/bunko/okazaki-to-ise/" style="display:inline-block;margin:.5rem 1.2rem 0 0;font-size:.78rem;letter-spacing:.14em;color:var(--vermilion-deep);text-decoration:none;border-bottom:1px solid var(--gold-pale);">岡崎と伊勢 ── 懸税の物語 ▸</a><a href="/goshinshu/" style="display:inline-block;margin:.5rem 1.2rem 0 0;font-size:.78rem;letter-spacing:.14em;color:var(--vermilion-deep);text-decoration:none;border-bottom:1px solid var(--gold-pale);">御神酒三部作の記録 ▸</a></div></div>
-      <div class="tdy-card"><div class="tdy-cap">度會神道の学びと和儀</div><p style="margin:0;font-size:.92rem;line-height:2;">典籍を声に出して読む講義と、能楽・狂言の身体技法から生まれた「和儀」のお稽古。頭で分かったことを、身体で知る場です。</p><div style="margin-top:.5rem;"><a href="https://nakatokojuku.jp/nakatokojuku/#manabi" style="display:inline-block;margin:.5rem 1.2rem 0 0;font-size:.78rem;letter-spacing:.14em;color:var(--vermilion-deep);text-decoration:none;border-bottom:1px solid var(--gold-pale);">学びを読む ▸</a><a href="/bunko/watarai-shinto/" style="display:inline-block;margin:.5rem 1.2rem 0 0;font-size:.78rem;letter-spacing:.14em;color:var(--vermilion-deep);text-decoration:none;border-bottom:1px solid var(--gold-pale);">度會神道とは ▸</a><a href="/bunko/yamatohime/" style="display:inline-block;margin:.5rem 1.2rem 0 0;font-size:.78rem;letter-spacing:.14em;color:var(--vermilion-deep);text-decoration:none;border-bottom:1px solid var(--gold-pale);">倭姫命世記をやさしく ▸</a></div></div>
-    </div>
+    <ol class="tobira-list">
+      <li class="tb">
+        <h3 class="tb-title">塾名「中常」の由来</h3>
+        <div class="tb-text"><p>伊勢外宮の神主・出口延佳が「中常ノ道ヲ神道トセル」と説いた言葉に由来します。今というこの一点が、そのまま永遠である ── その足場の名です。</p><p class="tb-links"><a href="https://nakatokojuku.jp/nakatokojuku/#yurai">由来を読む ▸</a><a href="/bunko/nakatoko-no-michi/">解説「中常」という名 ▸</a></p></div>
+        <figure class="ph"><img src="/nakatokojuku/photo_toyomiyazaki.jpg" alt="史蹟・舊豐宮崎文庫の石柱の前で、所蔵の典籍『中臣祓瑞穂鈔』を手にかざす" width="1000" height="750" loading="lazy" decoding="async"></figure>
+      </li>
+      <li class="tb">
+        <h3 class="tb-title">塾主のルーツと伊雜宮</h3>
+        <div class="tb-text"><p>出雲族・登美氏から奥州安倍氏、松浦へ。伊雜宮を造営した伊佐波登美神に連なる家の物語が、塾主の家には伝わります。</p><p class="tb-links"><a href="https://nakatokojuku.jp/nakatokojuku/#roots">物語を読む ▸</a><a href="/bunko/matsuura-abe/">家の言い伝えを史料と歩く ▸</a><a href="/bunko/ayumi-no-chizu/">あなたの神話の地図をひらく ▸</a></p></div>
+        <figure class="ph"><img src="/nakatokojuku/photo_isawanomiya.jpg" alt="皇大神宮別宮 伊雜宮の社号標の前で、稲穂を手にした塾主と家族" width="1400" height="1050" loading="lazy" decoding="async"></figure>
+      </li>
+      <li class="tb">
+        <h3 class="tb-title">奉納事業 ── 懸税と御神酒</h3>
+        <div class="tb-text"><p>神嘗祭へ稲穂の束「懸税」を捧げ、御神酒を醸して奉る。2014年から続く奉納と、祭典への奉仕の記録です。</p><p class="tb-links"><a href="https://nakatokojuku.jp/nakatokojuku/#hounou">奉納を読む ▸</a><a href="/bunko/okazaki-to-ise/">岡崎と伊勢 ── 懸税の物語 ▸</a><a href="/goshinshu/">御神酒三部作の記録 ▸</a></p></div>
+        <figure class="ph"><img src="/nakatokojuku/photo_hatsuhobiki.jpg" alt="神嘗祭の初穂曳き。白装束に鉢巻をしめ、懸税の稲穂を抱える" width="1000" height="1333" loading="lazy" decoding="async" style="object-position:center 40%;"></figure>
+      </li>
+      <li class="tb">
+        <h3 class="tb-title">度會神道の学びと和儀</h3>
+        <div class="tb-text"><p>典籍を声に出して読む講義と、能楽・狂言の身体技法から生まれた「和儀」のお稽古。頭で分かったことを、身体で知る場です。</p><p class="tb-links"><a href="https://nakatokojuku.jp/nakatokojuku/#manabi">学びを読む ▸</a><a href="/bunko/watarai-shinto/">度會神道とは ▸</a><a href="/bunko/yamatohime/">倭姫命世記をやさしく ▸</a></p></div>
+        <figure class="ph"><img src="/nakatokojuku/photo_wagi.jpg" alt="能舞台の松の鏡板の前で、和儀の稽古に座す塾主" width="1400" height="794" loading="lazy" decoding="async"></figure>
+      </li>
+    </ol>
   </div>
 </section>
 
-<div class="bunko-link band-shippou reveal">
-  <div class="inner">
-    <div class="seal lg">庫</div>
-    <p>豐中常文庫は、中常塾が蔵する度會神道の典籍を電子の形に写し、広く現代の手に渡すために開いた文庫です。第一冊は、塾主所蔵の『<span class="em">倭姫命世記</span>』書写本（寛文九年・出口延佳校合）です。</p>
-    <a class="btn-ink" href="https://nakatokojuku.jp/bunko/">豐中常文庫を開く ▸</a>
+<div class="bunko-link reveal">
+  <div class="wrap-wide bunko-grid">
+    <figure class="ph"><img src="/nakatokojuku/photo_manuscript.jpg" alt="塾主所蔵『倭姫命世記』書写本の一頁。墨の楷書で本文が書き継がれている" width="900" height="1200" loading="lazy" decoding="async"></figure>
+    <div class="bunko-text">
+      <p>豐中常文庫は、中常塾が蔵する度會神道の典籍を電子の形に写し、広く現代の手に渡すために開いた文庫です。第一冊は、塾主所蔵の『<span class="em">倭姫命世記</span>』書写本（寛文九年・出口延佳校合）です。</p>
+      <a class="btn-ink" href="https://nakatokojuku.jp/bunko/">豐中常文庫を開く ▸</a>
+    </div>
   </div>
 </div>
 
-<section class="section voices reveal">
-  <div class="wrap">
-    <div class="sec-label">
-      <div class="seal sq">声</div>
-      <div class="sec-head">
-        <div class="sec-kicker">VOICES</div>
-        <div class="sec-titlerow"><h2>参加者の声</h2><span class="sec-rule"></span></div>
+<section class="voices reveal" id="koe">
+  <div class="wrap-wide">
+    <div class="voice-feature">
+      <figure class="ph"><img src="/jikoshoukai/photo_warai.jpg" alt="能舞台での和儀の稽古。松の鏡板の前で、塾主と参加者が笑い合う" width="1600" height="916" loading="lazy" decoding="async"></figure>
+      <div class="vf-body">
+        <h2>参加者の声</h2>
+        <blockquote class="vf-quote"><p>和儀に少し触れただけでも心身が整ったような気がします。すり足の効果が早速出て、「そそそそっと歩いてきた」と言われました。少しおしとやかに見えたようで、嬉しかったです。</p><p class="vf-attr">和儀お稽古参加　50代女性（岡崎市）</p></blockquote>
       </div>
     </div>
-    <div class="voice-list">
-      <div class="voice-card"><div class="voice-mark" aria-hidden="true">「</div><p class="voice-text">永年心に引っかかっていた違和感がすっと溶けて、目から鱗でした。300年以上前に説いて下さっていたとは！開塾日に伺えて、光栄です。</p><div class="voice-attr">開塾日参加　50代女性（名古屋市）</div></div>
-      <div class="voice-card"><div class="voice-mark" aria-hidden="true">「</div><p class="voice-text">古来、文化、根源を学び、軸を知り、力の源を解りやすく体験しました。柔らかく教えて頂き、また体験出来た事、有難う御座いました。また参加させて頂きます。</p><div class="voice-attr">度會神道講義・和儀参加　50代男性（岐阜県岐阜市）</div></div>
-      <div class="voice-card"><div class="voice-mark" aria-hidden="true">「</div><p class="voice-text">私自身が永らく「誰とも共有できなかった大切な価値観」として心に秘めていた内容と同じことが書かれており、感動いたしました。神道、自分自身を信じてまっすぐ生きればよいのだ、と肚落ちいたしました。</p><div class="voice-attr">度會神道講義・和儀参加　50代女性（名古屋市）</div></div>
-      <div class="voice-card"><div class="voice-mark" aria-hidden="true">「</div><p class="voice-text">和儀に少し触れただけでも心身が整ったような気がします。すり足の効果が早速出て、「そそそそっと歩いてきた」と言われました。少しおしとやかに見えたようで、嬉しかったです。</p><div class="voice-attr">和儀お稽古参加　50代女性（岡崎市）</div></div>
-      <div class="voice-card"><div class="voice-mark" aria-hidden="true">「</div><p class="voice-text">日本文化に触れ、和儀、口伝。伝える事の大切さ、伝える事の本質、日本人のしん、人としてのしん。大変貴重な体験、また勉強になりました。有難うございます。</p><div class="voice-attr">岡崎城二の丸能楽堂にて　50代男性（岐阜県岐阜市）</div></div>
-      <div class="voice-card"><div class="voice-mark" aria-hidden="true">「</div><p class="voice-text">習った摺り足の姿勢をとって歩くと身体の深部が筋肉痛。普段どれだけ中心の筋肉を使っていないか実感しました。</p><div class="voice-attr">和儀お稽古参加　50代女性（岡崎市）</div></div>
-      <div class="voice-card"><div class="voice-mark" aria-hidden="true">「</div><p class="voice-text">新緑の季節の中、能楽堂でのお稽古。場の空気に触れるだけでも、貴重なひとときでした。美しい所作、美しい佇まい、身につけたいなとしみじみ感じました。</p><div class="voice-attr">岡崎城二の丸能楽堂にて　50代女性（岡崎市）</div></div>
-      <div class="voice-card"><div class="voice-mark" aria-hidden="true">「</div><p class="voice-text">柔らかなお言葉で、体験の出来ない世界を解りやすく伝えて頂き有難う御座います。また参加させて頂きます。</p><div class="voice-attr">度會神道講義参加　50代男性（岐阜県岐阜市）</div></div>
-      <div class="voice-card"><div class="voice-mark" aria-hidden="true">「</div><p class="voice-text">自分軸を定め、潔いよい心を養う為に、和儀の稽古で肚を知る・つくる・練ることが重要であるとのお話、違和感なくスッと心に入って参りました。素読を行い、さらに深めたいと思います。</p><div class="voice-attr">度會神道講義・和儀参加　T.M.さん（60代男性・豊橋市）</div></div>
-    </div>
-      <div class="voice-card"><div class="voice-mark" aria-hidden="true">「</div><p class="voice-text">「日本とは、日本人とは何なのか」── 数年前、漠然と私の頭の中に問いが沸きました。わかったようなわからないような、そんな感覚でいる所に参加して、今まで学んだ事が能楽という表現でギュッと詰まって形になっていました。</p><div class="voice-attr">度會神道講義・和儀参加　50代女性（静岡県菊川市）</div></div>
-      <div class="voice-card"><div class="voice-mark" aria-hidden="true">「</div><p class="voice-text">足裏を感じる。足指を感じる。踏ん張れる。しっかり立てている。自分の軸が解る。能楽堂で足袋を履き摺り足を体感した後の足裏の感覚は、とても感じやすくなりました。</p><div class="voice-attr">度會神道講義・和儀参加　50代女性（静岡県菊川市）</div></div>
-      <div class="voice-card"><div class="voice-mark" aria-hidden="true">「</div><p class="voice-text">能の舞台の意味を知った時、鳥肌が立ちましたよ。自分のからだの動きを一つひとつ確認しながら、見よう見まねで能舞台を歩きました。あのカラダの使い方は、小学校から取り入れるべき、なんて思いました。</p><div class="voice-attr">度會神道講義・和儀参加　50代女性（静岡県掛川市）</div></div>
-      <div class="voice-card"><div class="voice-mark" aria-hidden="true">「</div><p class="voice-text">一つひとつの所作において「肚」が大切であることを学びました。実際にやってみると想像以上に難しく、鍛える以前に、まずはこれまで身についた身体の癖や間違った使い方を整えることが必要なのだと実感しました。</p><div class="voice-attr">度會神道講義・和儀参加　60代男性（神奈川県川崎市）</div></div>
-      <div class="voice-card"><div class="voice-mark" aria-hidden="true">「</div><p class="voice-text">講義では『中臣祓瑞穂鈔』の素読を行いました。和儀を体験した直後だったこともあり、身体感覚と結びついて内容をイメージしやすく感じました。気がつけば、あっという間に半日が過ぎていました。</p><div class="voice-attr">度會神道講義・和儀参加　60代男性（神奈川県川崎市）</div></div>
-      <div class="voice-card"><div class="voice-mark" aria-hidden="true">「</div><p class="voice-text">2回目の受講ですが、通勤途中で摺り足をイメージして練習した成果が出たのか、「前回よりも上達してます」とのお言葉を頂きました。中級受講を目指し、これからも実践致します。</p><div class="voice-attr">和儀お稽古 初心・初級参加（2回目）　60代男性（愛知県豊橋市）</div></div>
-      <div class="voice-card"><div class="voice-mark" aria-hidden="true">「</div><p class="voice-text">奥の深いお話と実技で、あっという間に終わってしまった感じです。また次回の講座にも参加申し込みしたいと思います。</p><div class="voice-attr">度會神道講義・和儀参加　40代女性（愛知県豊田市）</div></div>
-      <div class="voice-card"><div class="voice-mark" aria-hidden="true">「</div><p class="voice-text">岡崎城二の丸能楽堂、和儀にて。肚、勉強致しました。有難うございます。</p><div class="voice-attr">和儀お稽古参加　50代男性（岐阜県岐阜市）</div></div>
+    <ul class="voice-stream">
+      <li><p class="voice-text">永年心に引っかかっていた違和感がすっと溶けて、目から鱗でした。300年以上前に説いて下さっていたとは！開塾日に伺えて、光栄です。</p><span class="voice-attr">開塾日参加　50代女性（名古屋市）</span></li>
+      <li><p class="voice-text">古来、文化、根源を学び、軸を知り、力の源を解りやすく体験しました。柔らかく教えて頂き、また体験出来た事、有難う御座いました。また参加させて頂きます。</p><span class="voice-attr">度會神道講義・和儀参加　50代男性（岐阜県岐阜市）</span></li>
+      <li><p class="voice-text">私自身が永らく「誰とも共有できなかった大切な価値観」として心に秘めていた内容と同じことが書かれており、感動いたしました。神道、自分自身を信じてまっすぐ生きればよいのだ、と肚落ちいたしました。</p><span class="voice-attr">度會神道講義・和儀参加　50代女性（名古屋市）</span></li>
+      <li><p class="voice-text">日本文化に触れ、和儀、口伝。伝える事の大切さ、伝える事の本質、日本人のしん、人としてのしん。大変貴重な体験、また勉強になりました。有難うございます。</p><span class="voice-attr">岡崎城二の丸能楽堂にて　50代男性（岐阜県岐阜市）</span></li>
+      <li><p class="voice-text">習った摺り足の姿勢をとって歩くと身体の深部が筋肉痛。普段どれだけ中心の筋肉を使っていないか実感しました。</p><span class="voice-attr">和儀お稽古参加　50代女性（岡崎市）</span></li>
+      <li><p class="voice-text">新緑の季節の中、能楽堂でのお稽古。場の空気に触れるだけでも、貴重なひとときでした。美しい所作、美しい佇まい、身につけたいなとしみじみ感じました。</p><span class="voice-attr">岡崎城二の丸能楽堂にて　50代女性（岡崎市）</span></li>
+      <li><p class="voice-text">柔らかなお言葉で、体験の出来ない世界を解りやすく伝えて頂き有難う御座います。また参加させて頂きます。</p><span class="voice-attr">度會神道講義参加　50代男性（岐阜県岐阜市）</span></li>
+      <li><p class="voice-text">自分軸を定め、潔いよい心を養う為に、和儀の稽古で肚を知る・つくる・練ることが重要であるとのお話、違和感なくスッと心に入って参りました。素読を行い、さらに深めたいと思います。</p><span class="voice-attr">度會神道講義・和儀参加　T.M.さん（60代男性・豊橋市）</span></li>
+      <li><p class="voice-text">「日本とは、日本人とは何なのか」── 数年前、漠然と私の頭の中に問いが沸きました。わかったようなわからないような、そんな感覚でいる所に参加して、今まで学んだ事が能楽という表現でギュッと詰まって形になっていました。</p><span class="voice-attr">度會神道講義・和儀参加　50代女性（静岡県菊川市）</span></li>
+      <li><p class="voice-text">足裏を感じる。足指を感じる。踏ん張れる。しっかり立てている。自分の軸が解る。能楽堂で足袋を履き摺り足を体感した後の足裏の感覚は、とても感じやすくなりました。</p><span class="voice-attr">度會神道講義・和儀参加　50代女性（静岡県菊川市）</span></li>
+      <li><p class="voice-text">能の舞台の意味を知った時、鳥肌が立ちましたよ。自分のからだの動きを一つひとつ確認しながら、見よう見まねで能舞台を歩きました。あのカラダの使い方は、小学校から取り入れるべき、なんて思いました。</p><span class="voice-attr">度會神道講義・和儀参加　50代女性（静岡県掛川市）</span></li>
+      <li><p class="voice-text">一つひとつの所作において「肚」が大切であることを学びました。実際にやってみると想像以上に難しく、鍛える以前に、まずはこれまで身についた身体の癖や間違った使い方を整えることが必要なのだと実感しました。</p><span class="voice-attr">度會神道講義・和儀参加　60代男性（神奈川県川崎市）</span></li>
+      <li><p class="voice-text">講義では『中臣祓瑞穂鈔』の素読を行いました。和儀を体験した直後だったこともあり、身体感覚と結びついて内容をイメージしやすく感じました。気がつけば、あっという間に半日が過ぎていました。</p><span class="voice-attr">度會神道講義・和儀参加　60代男性（神奈川県川崎市）</span></li>
+      <li><p class="voice-text">2回目の受講ですが、通勤途中で摺り足をイメージして練習した成果が出たのか、「前回よりも上達してます」とのお言葉を頂きました。中級受講を目指し、これからも実践致します。</p><span class="voice-attr">和儀お稽古 初心・初級参加（2回目）　60代男性（愛知県豊橋市）</span></li>
+      <li><p class="voice-text">奥の深いお話と実技で、あっという間に終わってしまった感じです。また次回の講座にも参加申し込みしたいと思います。</p><span class="voice-attr">度會神道講義・和儀参加　40代女性（愛知県豊田市）</span></li>
+      <li><p class="voice-text">岡崎城二の丸能楽堂、和儀にて。肚、勉強致しました。有難うございます。</p><span class="voice-attr">和儀お稽古参加　50代男性（岐阜県岐阜市）</span></li>
+      <li><p class="voice-text">マナーに何か繋がるものがあればと教えていただき、参加させていただきました。そもそも、能舞台に立てるなんて思ってもなかった。こんな機会をいただけたことに感謝。松浦先生は島根県出雲のご出身で、同じ山陰地方の出身。それだけでも、勝手にご縁を感じた一日でした。</p><span class="voice-attr">度會神道講義・和儀参加　40代女性（愛知県豊田市）</span></li>
+      <li><p class="voice-text">日本人なのに、自分の国のことを何も知らずにいたのだと気付かされました。能舞台に立つことなど、なかなかできない体験もさせていただきました。これは一回限りではなく、何度も何度も学ぶ価値がある講座だと思いますので、また受講を申し込みたいと思います。</p><span class="voice-attr">度會神道講義・和儀参加　40代女性（愛知県豊田市）</span></li>
+      <li><p class="voice-text">度會神道には和儀の教えと同じことが書かれておりますので、和儀のお稽古が「身体を使っての実践」、度會神道がその「エビデンス」では、と思っております。「忘れてしまった大切なこと」を取り戻そうとしているわけですから、いつか皆様にも必要としていただけるのは間違いないと思います。</p><span class="voice-attr">度會神道講義・和儀参加（継続受講）　50代女性（名古屋市）</span></li>
+    </ul>
   </div>
-      <div class="voice-card"><div class="voice-mark" aria-hidden="true">「</div><p class="voice-text">マナーに何か繋がるものがあればと教えていただき、参加させていただきました。そもそも、能舞台に立てるなんて思ってもなかった。こんな機会をいただけたことに感謝。松浦先生は島根県出雲のご出身で、同じ山陰地方の出身。それだけでも、勝手にご縁を感じた一日でした。</p><div class="voice-attr">度會神道講義・和儀参加　40代女性（愛知県豊田市）</div></div>
-      <div class="voice-card"><div class="voice-mark" aria-hidden="true">「</div><p class="voice-text">日本人なのに、自分の国のことを何も知らずにいたのだと気付かされました。能舞台に立つことなど、なかなかできない体験もさせていただきました。これは一回限りではなく、何度も何度も学ぶ価値がある講座だと思いますので、また受講を申し込みたいと思います。</p><div class="voice-attr">度會神道講義・和儀参加　40代女性（愛知県豊田市）</div></div>
-      <div class="voice-card"><div class="voice-mark" aria-hidden="true">「</div><p class="voice-text">度會神道には和儀の教えと同じことが書かれておりますので、和儀のお稽古が「身体を使っての実践」、度會神道がその「エビデンス」では、と思っております。「忘れてしまった大切なこと」を取り戻そうとしているわけですから、いつか皆様にも必要としていただけるのは間違いないと思います。</p><div class="voice-attr">度會神道講義・和儀参加（継続受講）　50代女性（名古屋市）</div></div>
 </section>
 
-<div class="cta-wrap reveal" style="border-bottom:none;padding-bottom:1.4rem;">
-  <div class="wrap" style="text-align:center;">
-    <p class="cta-lead">ここまで読んでくださったあなたへ ── まずは、明日の朝の一節から。</p>
-    <a class="btn-vermilion" href="#tsunagaru">毎朝、肚に一節を受け取る　▸</a>
+<figure class="ph okihiki reveal"><img src="/goshinshu/photo_okihiki_group.jpg" alt="御木曳きの日、白装束の奉曳の仲間が奉曳車の前で両手を挙げて集う" width="1200" height="675" loading="lazy" decoding="async"></figure>
+
+<div class="wrap-wide reveal">
+  <div class="cta-pair">
+    <div>
+      <p class="cta-lead">ここまで読んでくださったあなたへ ── まずは、明日の朝の一節から。</p>
+      <a class="btn-vermilion" href="#tsunagaru">毎朝、肚に一節を受け取る　▸</a>
+    </div>
+    <div>
+      <p class="cta-lead">講義・お稽古への参加お申し込みは、以下よりどうぞ。</p>
+      <a class="btn-ink" href="https://mosh.jp/nakatokojuku/articles/66137" target="_blank" rel="noopener noreferrer">お申し込みはこちら ▸</a>
+      <p class="cta-note">※ ボタンからは外部の申込ページ（MOSH）へ移ります。</p>
+    </div>
   </div>
 </div>
 
-<div class="cta-wrap reveal">
-  <div class="wrap" style="text-align:center;">
-    <p class="cta-lead">講義・お稽古への参加お申し込みは、以下よりどうぞ。</p>
-    <a class="btn-ink" href="https://mosh.jp/nakatokojuku/articles/66137" target="_blank" rel="noopener noreferrer">お申し込みはこちら ▸</a>
-    <p style="margin-top:1.1rem;font-size:.72rem;letter-spacing:.08em;color:var(--muted);">※ ボタンからは外部の申込ページ（MOSH）へ移ります。</p>
-  </div>
-</div>
-
-<section class="contact band-shippou" id="contact">
+<section class="contact" id="contact">
   <div class="inner">
-    <div class="seal lg">縁</div>
     <p class="contact-desc">中常塾・豐中常文庫に関するご感想、度會神道についてのご質問は、各SNSのメッセージにてお気軽にどうぞ。</p>
     <div class="sns-row">
       <a class="sns-btn" href="https://www.instagram.com/nakatokojuku/" target="_blank" rel="noopener noreferrer">
@@ -703,7 +726,9 @@
     const setHTML = (id,html)=>{ const el=document.getElementById(id); if(el) el.innerHTML=html; };
     const setTxt = (id,t)=>{ const el=document.getElementById(id); if(el) el.textContent=t; };
 
-    setTxt("tdyDate","令和"+reiwa+"年 "+m+"月"+d+"日（"+week[now.getDay()]+"）");
+    // 縦組みの日付：数字は縦中横で立てる
+    const tcy = (n)=>'<span class="tcy">'+n+'</span>';
+    setHTML("tdyDate","令和"+tcy(reiwa)+"年 "+tcy(m)+"月"+tcy(d)+"日（"+week[now.getDay()]+"）");
 
     let curIdx = KO.length-1;
     for(let i=0;i<KO.length;i++){ if(m>KO[i][0]||(m===KO[i][0]&&d>=KO[i][1])) curIdx=i; }
@@ -718,18 +743,18 @@
       if(a<23.5)return"下弦の月"; if(a<27.5)return"有明の月"; return"晦（つごもり）近し";
     };
     setHTML("tdyKoyomi",
-      '<div class="kou"><span class="sekki">'+cur[2]+'</span> ── '+cur[3]+'</div>'+
+      '<div class="kou"><span class="sekki">'+cur[2]+'</span><span class="ko">'+cur[3]+'</span></div>'+
       '<div class="yomi">'+cur[4]+'</div>'+
-      '<div class="tsuki">月齢 '+age.toFixed(1)+' ── '+moonName(age)+'</div>');
+      '<div class="tsuki">月齢 '+age.toFixed(1)+'　'+moonName(age)+'</div>');
 
     const pair = (D.kou && D.kou[curIdx]) ? D.kou[curIdx] : null;
     let q;
     if(pair && D.pool[pair.q]){ q = D.pool[pair.q]; }
     else { const doy = Math.floor((now - new Date(y,0,0))/86400000); q = ISSETSU[doy%ISSETSU.length]; }
-    setHTML("tdyIssetsu",'<blockquote>'+q.t+'<span class="src">── '+q.s+'</span></blockquote>');
+    setHTML("tdyIssetsu",'<blockquote>'+q.t+'<span class="src">'+q.s+'</span></blockquote>');
 
     if(pair){
-      setHTML("tdyHitokoto",'<div class="h-date">七十二候 ── '+cur[3]+'</div><div class="h-text">'+pair.h+'</div>');
+      setHTML("tdyHitokoto",'<div class="h-date">七十二候　'+cur[3]+'</div><div class="h-text">'+pair.h+'</div>');
     }
 
     const todayISO = y+"-"+("0"+m).slice(-2)+"-"+("0"+d).slice(-2);
