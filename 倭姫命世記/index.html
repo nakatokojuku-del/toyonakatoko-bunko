@@ -348,6 +348,7 @@
   <script data-goatcounter="https://nakatokojuku.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
 
+<link rel="stylesheet" href="yakugo.css">
 <style id="wa-refine">
   :root{
     --vermilion-soft:#bb4a3a;
@@ -483,6 +484,7 @@
   <div class="wrap">
     <button class="tab-btn active" onclick="switchTab('image', this)">書写本画像</button>
     <button class="tab-btn" onclick="switchTab('text', this)">翻刻テキスト</button>
+    <button class="tab-btn" onclick="switchTab('yaku', this)">現代語訳</button>
     <button class="tab-btn" onclick="switchTab('about', this)">解題</button>
   </div>
 </div>
@@ -770,6 +772,9 @@
   </div>
 </div>
 
+<!-- ── 現代語訳タブ（中身は yakugo.js / yakugo-view.js が描画） ── -->
+<div id="viewer-yaku" class="viewer"></div>
+
 <!-- ── 解題タブ ── -->
 <div id="viewer-about" class="viewer">
   <div class="about-section">
@@ -985,6 +990,8 @@
 
   loadPage(0);
 </script>
+<script src="yakugo.js"></script>
+<script src="yakugo-view.js"></script>
 
 <script>
 (function(){
