@@ -247,8 +247,8 @@ def md_list(lines, inline=inline_md):
 
 def yaku_inline(s):
     s = inline_md(s)
-    # 《傍記：…》《割注：…》《小字注：…》《小字：…》
-    s = re.sub(r"《(傍記|割注|小字注|小字)：(.*?)》",
+    # 《傍記：…》《割注：…》《異本注記：…》《細字注：…》など、原本の小字の書き入れ
+    s = re.sub(r"《([^：》]{1,8})：(.*?)》",
                lambda m: '<span class="z-y-small" data-kind="%s">%s</span>' % (m.group(1), m.group(2)), s)
     # 〔1〕 注番号
     s = re.sub(r"〔(\d+)〕", r'<sup class="z-ref">\1</sup>', s)
@@ -266,7 +266,10 @@ def yaku_body(lines):
         if t == "【左丁】" or t == "【右丁】":
             out.append('<p class="z-y-side">%s</p>' % esc(t[1:-1]))
         else:
-            out.append("<p>%s</p>" % yaku_inline(t))
+            h = yaku_inline(t)
+            # 見出しのない 《…》 も、訳の本文では原本の小字（割注など）として小さく組む
+            h = re.sub(r"《([^《》]*)》", r'<span class="z-y-small">\1</span>', h)
+            out.append("<p>%s</p>" % h)
     return "".join(out)
 
 

@@ -141,6 +141,7 @@
 .z-y-small{font-size:.8em;color:var(--muted);}
 .z-y-small::before{content:"〔" attr(data-kind) "："; }
 .z-y-small::after{content:"〕";}
+.z-y-small:not([data-kind])::before{content:"〔";}
 
 /* 注（翻刻の注・訳の頭注と注） */
 .z-notes{margin-top:1rem;padding-top:.8rem;border-top:1px solid var(--line);font-size:.76rem;line-height:1.95;color:var(--ink-soft);}
