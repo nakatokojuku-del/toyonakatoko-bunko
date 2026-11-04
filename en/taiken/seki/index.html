@@ -493,7 +493,7 @@ p.body:last-child{margin-bottom:0;}
   margin-bottom:1.8rem;
 }
 .cta-headline{
-  font-size:clamp(1.7rem,4.5vw,3rem);
+  font-size:clamp(1.7rem,4.5vw,2.4rem);
   letter-spacing:.14em;font-weight:600;
   color:#f5edd8;
   margin-bottom:1.4rem;
@@ -538,6 +538,7 @@ footer .f-seal{
 footer .f-seal span{display:grid;place-content:center;font-size:.88rem;line-height:1;}
 footer .f-seal span:first-child{border-bottom:1px solid rgba(255,255,255,.3);}
 footer .copy{margin-top:1.2rem;font-size:.62rem;letter-spacing:.22em;color:#7d6f56;}
+  .hb{display:block;text-wrap:balance;}  /* 見出しの<br>で区切った各行も、行の長さをそろえる */
 </style>
 <script>if(location.search.indexOf('skipgc')>-1){try{localStorage.setItem('skipgc','t')}catch(e){}}</script>
 <script data-goatcounter="https://nakatokojuku.goatcounter.com/count"
@@ -545,7 +546,7 @@ footer .copy{margin-top:1.2rem;font-size:.62rem;letter-spacing:.22em;color:#7d6f
 <style>
   /* ── 改行の統一（PC/スマホ最適化） ── */
   @media (max-width:600px){ br.br-pc{ display:none; }
-    p.body, .lead, .hero-lead, h1, h2{ text-wrap: wrap !important; }  /* スマホは行を端まで詰める(greedy) */ budoux-ja{ word-break: normal !important; overflow-wrap: anywhere !important; } .wrap{ padding-left:2.4rem; padding-right:2.4rem; } }
+    p.body, .lead, .hero-lead{ text-wrap: wrap !important; }  /* スマホは本文を端まで詰める(greedy) */ h1, h2, h3{ text-wrap: balance !important; }  /* 見出しは行の長さをそろえ、一字落ちを防ぐ */ budoux-ja{ word-break: normal !important; overflow-wrap: anywhere !important; } .wrap{ padding-left:2.4rem; padding-right:2.4rem; } }
   budoux-ja{ display:inline; }
   .page-header h1, .sec-label h2{ text-wrap:balance; }
 </style>
@@ -672,7 +673,7 @@ footer .copy{margin-top:1.2rem;font-size:.62rem;letter-spacing:.22em;color:#7d6f
 <section class="hero">
   <div class="hero-inner">
     <p class="hero-kicker">Seki Shrine, Ise &mdash; lectures and practice in small groups</p>
-    <h1 class="hero-h1">At the shrine of the Watarai family&rsquo;s kami,<br>your <em>hara</em> awakens.</h1>
+    <h1 class="hero-h1"><span class="hb">At the shrine of the Watarai family&rsquo;s kami,</span><span class="hb">your <em>hara</em> awakens.</span></h1>
     <p class="hero-quote">&mdash; learning on the 1st of each month, at the foot of the Outer Shrine</p>
     <p class="hero-lead">
       Seki Shrine (世木神社), the shrine of the Watarai family&rsquo;s tutelary kami (<i>ujigami</i>), was once a place where Watarai Shinto was studied.
@@ -718,7 +719,7 @@ footer .copy{margin-top:1.2rem;font-size:.62rem;letter-spacing:.22em;color:#7d6f
         <div class="pillar-title">The Watarai family&rsquo;s shrine &mdash;<br>&ldquo;the bond of the place&rdquo;</div>
         <p class="pillar-body">
           Seki Shrine is the shrine of the tutelary kami of the Watarai, the family of priests of the Outer Shrine.
-          Its enshrined kami, the priest Watarai Haruhiko, served as teacher to Sugawara no Michizane, and is still remembered today as Shirotay&#363;.
+          Its enshrined kami, the priest Watarai Haruhiko, served as teacher to Sugawara no Michizane, and is still remembered today as Shiratay&#363; (白太夫).
           To study Watarai Shinto at the shrine where Watarai Shinto was once studied &mdash;
           the learning returns to the place where it was born.
         </p>
@@ -1107,7 +1108,7 @@ footer .copy{margin-top:1.2rem;font-size:.62rem;letter-spacing:.22em;color:#7d6f
 <section class="cta-section">
   <div class="wrap">
     <p class="cta-eyebrow">Nakatoko-juku　Lectures and practice at Seki Shrine, Ise</p>
-    <h2 class="cta-headline">In the land where Watarai learning was born,<br>come and temper your own hara.</h2>
+    <h2 class="cta-headline"><span class="hb">In the land where Watarai learning was born,</span><span class="hb">come and temper your own hara.</span></h2>
     <p class="cta-lead">
       Understanding with the head and knowing with the body are two different things.
       Within the &ldquo;bond of the place&rdquo; &mdash; a shrine bound up with the Watarai family &mdash; we learn over half a day.

@@ -81,3 +81,6 @@ html[lang="en"] [lang="ja"]{letter-spacing:revert;}
 .ja-orig{display:block;font-size:.86em;color:var(--muted,#6f6048);margin-bottom:.5rem;letter-spacing:.06em;}
 /* MOSH（日本語の申込サイト）についての添え書き */
 .en-note{font-size:.8rem;line-height:1.8;color:var(--muted,#6f6048);letter-spacing:.01em;}
+/* 見出しは行の長さをそろえる（日本語版の PR #33 に合わせる）。<br> で区切った見出しは .hb で包む */
+html[lang="en"] h1,html[lang="en"] h2,html[lang="en"] h3{text-wrap:balance;}
+html[lang="en"] .hb{display:block;text-wrap:balance;}

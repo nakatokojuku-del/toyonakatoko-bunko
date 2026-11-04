@@ -490,7 +490,7 @@ p.body:last-child{margin-bottom:0;}
   margin-bottom:1.8rem;
 }
 .cta-headline{
-  font-size:clamp(1.7rem,4.5vw,3rem);
+  font-size:clamp(1.7rem,4.5vw,2.4rem);
   letter-spacing:.14em;font-weight:600;
   color:#f5edd8;
   margin-bottom:1.4rem;
@@ -535,6 +535,7 @@ footer .f-seal{
 footer .f-seal span{display:grid;place-content:center;font-size:.88rem;line-height:1;}
 footer .f-seal span:first-child{border-bottom:1px solid rgba(255,255,255,.3);}
 footer .copy{margin-top:1.2rem;font-size:.62rem;letter-spacing:.22em;color:#7d6f56;}
+  .hb{display:block;text-wrap:balance;}  /* 見出しの<br>で区切った各行も、行の長さをそろえる */
 </style>
 <script>if(location.search.indexOf('skipgc')>-1){try{localStorage.setItem('skipgc','t')}catch(e){}}</script>
 <script data-goatcounter="https://nakatokojuku.goatcounter.com/count"
@@ -542,7 +543,7 @@ footer .copy{margin-top:1.2rem;font-size:.62rem;letter-spacing:.22em;color:#7d6f
 <style>
   /* ── 改行の統一（PC/スマホ最適化） ── */
   @media (max-width:600px){ br.br-pc{ display:none; }
-    p.body, .lead, .hero-lead, h1, h2{ text-wrap: wrap !important; }  /* スマホは行を端まで詰める(greedy) */ budoux-ja{ word-break: normal !important; overflow-wrap: anywhere !important; } .wrap{ padding-left:2.4rem; padding-right:2.4rem; } }
+    p.body, .lead, .hero-lead{ text-wrap: wrap !important; }  /* スマホは本文を端まで詰める(greedy) */ h1, h2, h3{ text-wrap: balance !important; }  /* 見出しは行の長さをそろえ、一字落ちを防ぐ */ budoux-ja{ word-break: normal !important; overflow-wrap: anywhere !important; } .wrap{ padding-left:2.4rem; padding-right:2.4rem; } }
   budoux-ja{ display:inline; }
   .page-header h1, .sec-label h2{ text-wrap:balance; }
 </style>
@@ -669,7 +670,7 @@ footer .copy{margin-top:1.2rem;font-size:.62rem;letter-spacing:.22em;color:#7d6f
 <section class="hero">
   <div class="hero-inner">
     <p class="hero-kicker">Okazaki Castle Ninomaru Noh Theatre &mdash; lectures and practice in small groups</p>
-    <h1 class="hero-h1">On the Noh stage, the Japan within you &mdash;<br>your <em>hara</em> &mdash; awakens.</h1>
+    <h1 class="hero-h1"><span class="hb">On the Noh stage, the Japan within you &mdash;</span><span class="hb">your <em>hara</em> &mdash; awakens.</span></h1>
     <p class="hero-quote">&mdash; a day spent standing before the painted pine</p>
     <p class="hero-lead">
       Settle your breath, feel your axis in the tanden, and walk the space in suriashi.
@@ -1143,7 +1144,7 @@ footer .copy{margin-top:1.2rem;font-size:.62rem;letter-spacing:.22em;color:#7d6f
 <section class="cta-section">
   <div class="wrap">
     <p class="cta-eyebrow">Nakatoko-juku　Lectures and practice on the Noh stage</p>
-    <h2 class="cta-headline">Before the painted pine,<br>come and stand there yourself.</h2>
+    <h2 class="cta-headline"><span class="hb">Before the painted pine,</span><span class="hb">come and stand there yourself.</span></h2>
     <p class="cta-lead">
       Understanding with the head and knowing with the body are two different things.
       Within the &ldquo;power of the place&rdquo; that is the Noh stage, we learn over the course of a day.
