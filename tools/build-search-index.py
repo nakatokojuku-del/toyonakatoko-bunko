@@ -23,6 +23,9 @@ OUT = ROOT / "search-index.json"
 
 # 索引に入れないファイル（リポジトリ直下からの相対パス）
 EXCLUDE = {"404.html", "search/index.html"}
+# 索引に入れないフォルダ。英語版（/en/）は日本語の検索ページに混ぜない
+# （英語ページにも「度會神道」などの和文の添え書きがあり、日本語の検索結果に同じ内容が二重に出るため）
+EXCLUDE_DIRS = {"en"}
 
 # 中身ごと読み飛ばす要素
 SKIP_TAGS = {"script", "style", "noscript", "template", "svg", "nav", "footer",
@@ -252,7 +255,8 @@ def index_kaidan():
 def main():
     entries = []
     pages = sorted(p for p in ROOT.rglob("*.html")
-                   if ".git" not in p.parts and p.relative_to(ROOT).as_posix() not in EXCLUDE)
+                   if ".git" not in p.parts and p.relative_to(ROOT).as_posix() not in EXCLUDE
+                   and p.relative_to(ROOT).parts[0] not in EXCLUDE_DIRS)
     for p in pages:
         entries.extend(index_html(p))
     entries.extend(index_kaidan())

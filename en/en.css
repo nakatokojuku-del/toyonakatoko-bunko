@@ -1,0 +1,83 @@
+/* 英語版（/en/）だけに効く文字組みの調整。
+   日本語版の CSS（各ページに埋め込み）はそのまま複製して使い、ここでは
+   和文向けの広い字間・行間を、欧文で読みやすい値に戻すだけにとどめる。 */
+html[lang="en"] body{word-break:normal;overflow-wrap:break-word;}
+html[lang="en"] p,
+html[lang="en"] li,
+html[lang="en"] td,
+html[lang="en"] blockquote,
+html[lang="en"] .lead,
+html[lang="en"] .body,
+html[lang="en"] .card-body,
+html[lang="en"] .flow-desc,
+html[lang="en"] .gz-body,
+html[lang="en"] .layer-desc,
+html[lang="en"] .pillar-body,
+html[lang="en"] .voice-text,
+html[lang="en"] .tb-text,
+html[lang="en"] .highlight,
+html[lang="en"] .note{letter-spacing:.005em!important;}
+html[lang="en"] p.body,
+html[lang="en"] .lead,
+html[lang="en"] .hero-lead,
+html[lang="en"] .about-section p,
+html[lang="en"] .why-open p{line-height:1.9!important;}
+html[lang="en"] .highlight,
+html[lang="en"] .voice-text,
+html[lang="en"] .pillar-body,
+html[lang="en"] .card-body,
+html[lang="en"] .flow-desc{line-height:1.8!important;}
+html[lang="en"] h1,
+html[lang="en"] h2,
+html[lang="en"] h3,
+html[lang="en"] .hero-h1,
+html[lang="en"] .cta-headline,
+html[lang="en"] .pillar-title,
+html[lang="en"] .card-title,
+html[lang="en"] .flow-title,
+html[lang="en"] .gz-name,
+html[lang="en"] .tb-title,
+html[lang="en"] .layer-title,
+html[lang="en"] .t,
+html[lang="en"] .tg-lead,
+html[lang="en"] .kicho-lead,
+html[lang="en"] .cta-lead,
+html[lang="en"] .hero-promise{letter-spacing:.015em!important;}
+html[lang="en"] .wordmark{letter-spacing:.08em!important;}
+html[lang="en"] .topnav,
+html[lang="en"] .kicker,
+html[lang="en"] .hero-kicker,
+html[lang="en"] .hero-overline,
+html[lang="en"] .cta-eyebrow,
+html[lang="en"] .k,
+html[lang="en"] .b,
+html[lang="en"] .sub,
+html[lang="en"] .crumb,
+html[lang="en"] .photo-cap,
+html[lang="en"] .header-photo-cap,
+html[lang="en"] .wagi-photo-cap,
+html[lang="en"] .voice-attr,
+html[lang="en"] .vf-attr,
+html[lang="en"] .flow-time,
+html[lang="en"] .f-line,
+html[lang="en"] .f-mark,
+html[lang="en"] .copy,
+html[lang="en"] .tg-cap,
+html[lang="en"] .kicho-cap,
+html[lang="en"] .btn-primary,
+html[lang="en"] .btn-ghost,
+html[lang="en"] .btn-vermilion,
+html[lang="en"] .btn-ink,
+html[lang="en"] .cta-btn,
+html[lang="en"] .tg-submit,
+html[lang="en"] .kicho-submit,
+html[lang="en"] .book-meta-line,
+html[lang="en"] .book-title-ruby{letter-spacing:.06em!important;}
+/* 和文の見出し・漢字一字の印などは日本語のまま（lang="ja" を付けた箇所） */
+html[lang="en"] [lang="ja"]{letter-spacing:revert;}
+/* 日本語版へのリンク */
+.lang-switch{font-family:'Shippori Mincho','Noto Serif JP',serif;}
+/* 原文の引用（日本語） */
+.ja-orig{display:block;font-size:.86em;color:var(--muted,#6f6048);margin-bottom:.5rem;letter-spacing:.06em;}
+/* MOSH（日本語の申込サイト）についての添え書き */
+.en-note{font-size:.8rem;line-height:1.8;color:var(--muted,#6f6048);letter-spacing:.01em;}
