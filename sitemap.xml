@@ -135,4 +135,34 @@
     <lastmod>2026-11-03</lastmod>
     <priority>0.5</priority>
   </url>
+  <url>
+    <loc>https://nakatokojuku.jp/en/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nakatokojuku.jp/en/nakatokojuku/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://nakatokojuku.jp/en/taiken/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://nakatokojuku.jp/en/taiken/seki/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nakatokojuku.jp/en/bunko/watarai-shinto/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://nakatokojuku.jp/en/yamatohime-seiki/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.6</priority>
+  </url>
 </urlset>
